@@ -1,0 +1,3 @@
+/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/KeyframeSelection.dir
