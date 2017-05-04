@@ -1,5 +1,10 @@
+//
+// Created by Ruili on 17-5-3.
+//
+
 #include <iostream>
-#include "tools.h"
+#include "keyframe_init.h"
+#include "keyframe_selection_update.h"
 
 using namespace std;
 
@@ -27,7 +32,6 @@ int main(int argc, char* argv[]) {
         cout << "with two arguments: testcase_directory threshold\n" << endl;
         return 1;
     }
-    读入图片，放入frames, name放入frame_names
     keyframe_init(argv[1], argv[2]);
     keyframe_selection_update(argv[1]);
     printf("Processing testcase Done***** \n%s\n", argv[1]);

@@ -1,5 +1,5 @@
 //
-// Created by Mingkuan Li on 16/9/10.
+// Created by Ruili on 17/5/3.
 //
 
 #ifndef EDGEDETECTION_TOOLS_H
@@ -21,12 +21,16 @@
 #include <regex>
 #include "constant.h"
 
+
 using namespace std;
 
 Constant constant;
 int rcnn_counter = 0;
+vector<cv::Mat> frames;
+vector<string> frame_names;
 
-void split(const string &src, const string &separator, vector<string> &dest) {
+void split(const string &src, const string &separator, vector<string> &dest)
+{
     string str = src;
     string substring;
     string::size_type start = 0, index;
@@ -54,8 +58,7 @@ bool landmark_comp_reverse(Landmark a, Landmark b) {
     return a.rect.x + a.rect.width / 2 > b.rect.x + b.rect.width / 2;
 }
 
-vector<cv::Mat> frames;
-vector<string> frame_names;
+
 
 cv::Mat load_frame(char *testcase_dir, int frame_index) {
     assert(frames.size() != 0);
@@ -165,71 +168,17 @@ int frame_counter(char *path) {
     int count = 0;
 
     dir = opendir(path);
-
-    // printf("In frame counter %s\n", path);
     regex pattern(".*\\.jpg");
 
-    while ((ent = readdir(dir)) != NULL) {
-        // printf("Type %d\n", ent->d_type);
-        // if (ent->d_type == DT_REG) {
-        //     printf("count file %s\n", ent->d_name);
+    while ((ent = readdir(dir)) != NULL)
+    {
         string str(ent->d_name);
-        if (regex_match(str, pattern)) {
+        if (regex_match(str, pattern))
             count++;
-        }
-        // }
     }
 
     return count;
 }
-
-/****
-int calculate_rotation_direction(char *testcase_dir, int max, int &frame_width, int &frame_height) {
-    KCFTracker tracker;
-
-    frame_width = frame_height = 0;
-
-    int init_frame_index = 20;
-    vector<Landmark> regions;
-    cv::Mat init;
-    do {
-        init_frame_index += 10;
-        if(init_frame_index > max - 10) {
-            return -1;
-        }
-        init = load_frame(testcase_dir, init_frame_index);
-        regions = run_rcnn_procedure(testcase_dir, init_frame_index);
-    } while(regions.size() == 0);
-
-    int cur_next = 10;
-    int result = 0;
-
-    int next_frame_index = max > cur_next + init_frame_index ? cur_next + init_frame_index : max;
-
-    cv::Mat final = load_frame(testcase_dir, next_frame_index);
-
-    tracker.init(regions[0].rect, init);
-    cv::Rect rect = tracker.update(final);
-
-    if (rect.x > regions[0].rect.x) {
-        result = 0;
-    } else if (rect.x < regions[0].rect.x) {
-        result = 1;
-    }
-
-    frame_width = init.cols;
-    frame_height = init.rows;
-
-    if(result == 0) {
-        printf("left to right\n");
-    } else {
-        printf("right to left\n");
-    }
-
-    // 0 - left to right
-    // 1 - right to left
-    return result;
-} */
 
 void show_image_with_rect(cv::Mat _image, cv::Rect rect) {
     cv::Mat image = _image.clone();
@@ -269,379 +218,9 @@ void remove_dir(char *path) {
     }
 }
 
-/******
-void keyframe_selection(char *testcase_dir_name) {
-    int pre_frame_index = 1;
-    int max_frame_index = 1;
-    int cur_frame_index = 1;
-    KCFTracker tracker;
 
-    char front_dir[256];
-    sprintf(front_dir, "%s/front", testcase_dir_name);
-    int total_frame = frame_counter(front_dir);
 
-    // mkdir store landmark list
-    char landmark_dir[256];
-    sprintf(landmark_dir, "%s/landmark", testcase_dir_name);
-    remove_dir(landmark_dir);
-    mkdir(landmark_dir, 0777);
 
-    char landmark_list_filename[256];
-    sprintf(landmark_list_filename, "%s/landmark.txt", landmark_dir);
-    FILE *landmark_list_file = fopen(landmark_list_filename, "w");
-    int landmark_count = 0;
-
-    printf("front dir: %s \nlandmark dir: %s \nlandmark_list_filename: %s\n", front_dir, landmark_dir,
-           landmark_list_filename);
-
-    // 0 - left to right && 1 - right to left
-    int frame_width, frame_height;
-    int rotation_direction = calculate_rotation_direction(testcase_dir_name, total_frame, frame_width, frame_height);
-
-    if (rotation_direction == -1) {
-        fprintf(landmark_list_file, "Something error!!!\n");
-        total_frame = 0;
-    }
-
-    // printf("in frame %d\n", total_frame);
-    // process left to right situation
-    while (pre_frame_index < total_frame) {
-        // printf("in frame %d\n", pre_frame_index);
-        vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index);
-        if (rotation_direction == 0) {
-            sort(regions.begin(), regions.end(), landmark_comp);
-        } else {
-            sort(regions.begin(), regions.end(), landmark_comp_reverse);
-        }
-        cv::Mat pre_frame = load_frame(testcase_dir_name, pre_frame_index);
-
-        // find the tracker regions
-        int region_index = 0;
-        bool is_process = false;
-
-        while (region_index < regions.size()) {
-
-            if (((regions[region_index].rect.x + regions[region_index].rect.width / 2
-                  >= frame_width / 2 + constant.tracker_ignore_threshold
-                  || regions[region_index].rect.y + regions[region_index].rect.height / 2
-                     >= frame_height / 2
-                  || regions[region_index].rect.x < constant.tracker_ignore_start_threshold) && rotation_direction == 0)
-                || ((regions[region_index].rect.x + regions[region_index].rect.width / 2
-                     < frame_width / 2 - constant.tracker_ignore_threshold
-                     || regions[region_index].rect.y + regions[region_index].rect.height / 2
-                        >= frame_height / 2
-                     || regions[region_index].rect.x + regions[region_index].rect.width
-                        > frame_width - constant.tracker_ignore_start_threshold) && rotation_direction == 1)) {
-                region_index++;
-                continue;
-            }
-
-            is_process = true;
-            // track this region
-            cur_frame_index = pre_frame_index;
-            tracker.init(regions[region_index].rect, pre_frame);
-            cv::Rect pre_rect, update_rect;
-            pre_rect = regions[region_index].rect;
-
-            // record landmark
-            printf("find landmark %03d\n", ++landmark_count);
-            fprintf(landmark_list_file, "%03d\n", landmark_count);
-
-            char landmark_sub_dir[256];
-            sprintf(landmark_sub_dir, "%s/%03d", landmark_dir, landmark_count);
-            mkdir(landmark_sub_dir, 0777);
-
-            char landmark_sub_list_filename[256];
-            sprintf(landmark_sub_list_filename, "%s/landmark_detail.txt", landmark_sub_dir);
-            FILE *landmark_sub_file = fopen(landmark_sub_list_filename, "w");
-
-            do {
-                // record landmark
-                fprintf(landmark_sub_file, "%03d.jpg %03d %d %d %d %d\n",
-                        cur_frame_index, cur_frame_index, pre_rect.x, pre_rect.y,
-                        pre_rect.x + pre_rect.width, pre_rect.y + pre_rect.height);
-
-                RectTools::limit(pre_rect, frame_width, frame_height);
-                cv::Mat ROI = pre_frame(pre_rect);
-
-                char landmark_region_filename[256];
-                sprintf(landmark_region_filename, "%s/%03d.jpg", landmark_sub_dir, cur_frame_index);
-                cv::imwrite(landmark_region_filename, ROI);
-
-                printf("Processing frame %d\n", cur_frame_index);
-
-                cur_frame_index++;
-
-                cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
-                update_rect = tracker.update(next_frame);
-
-                pre_rect = update_rect;
-                pre_frame = next_frame;
-
-                // show_image_with_rect(next_frame, update_rect);
-            } while (cur_frame_index < total_frame
-                     && (((update_rect.x + update_rect.width < frame_width - constant.tracker_threshold) &&
-                          rotation_direction == 0)
-                         || ((update_rect.x > constant.tracker_threshold) && rotation_direction == 1)));
-
-            fclose(landmark_sub_file);
-
-            if (max_frame_index < cur_frame_index) {
-                max_frame_index = cur_frame_index;
-            }
-            region_index++;
-        }
-
-        if (is_process) {
-            pre_frame_index = max_frame_index + 1;
-        } else {
-            pre_frame_index += 10;
-
-        }
-    }
-
-
-    fprintf(landmark_list_file, "RCNN counter: %d\n", rcnn_counter);
-    rcnn_counter = 0;
-    fclose(landmark_list_file);
-    return;
-}
-*/
-
-void keyframe_selection_update(char *testcase_dir_name) {
-    int pre_frame_index = 1;
-    int max_frame_index = 1;
-    int cur_frame_index = 1;
-
-    KCFTracker tracker;
-
-    char front_dir[256];
-    sprintf(front_dir, "%s/front", testcase_dir_name);
-    int total_frame = frame_counter(front_dir);
-
-    // mkdir store landmark list
-    char landmark_dir[256];
-    sprintf(landmark_dir, "%s/landmark", testcase_dir_name);
-    remove_dir(landmark_dir);
-    mkdir(landmark_dir, 0777);
-
-    char landmark_list_filename[256];
-    sprintf(landmark_list_filename, "%s/landmark.txt", landmark_dir);
-    FILE *landmark_list_file = fopen(landmark_list_filename, "w");
-    int landmark_count = 0;
-
-    printf("front dir: %s \nlandmark dir: %s \nlandmark_list_filename: %s\n", front_dir, landmark_dir,
-           landmark_list_filename);
-
-    while (pre_frame_index < total_frame) {
-        vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index);
-        sort(regions.begin(), regions.end(), landmark_comp);
-
-        cv::Mat pre_frame = load_frame(testcase_dir_name, pre_frame_index);
-
-        int frame_width, frame_height;
-        frame_width = pre_frame.cols;
-        frame_height = pre_frame.rows;
-
-        int region_index = 0;
-        bool is_process = false;
-
-        while (region_index < regions.size()) {
-                //过滤掉region在图片下半部分的情况
-            if ((regions[region_index].rect.x < constant.tracker_ignore_start_threshold
-                 || regions[region_index].rect.y + regions[region_index].rect.height / 2
-                    >= frame_height / 2
-                 || regions[region_index].rect.x + regions[region_index].rect.width
-                    > frame_width - constant.tracker_ignore_start_threshold)) {
-                region_index++;
-                continue;
-            }
-
-            is_process = true;
-
-            cur_frame_index = pre_frame_index;
-            tracker.init(regions[region_index].rect, pre_frame);
-
-            cv::Rect pre_rect, update_rect;
-            pre_rect = regions[region_index].rect;
-
-            printf("find landmark %03d\n", ++landmark_count);
-            fprintf(landmark_list_file, "%03d\n", landmark_count);
-
-            char landmark_sub_dir[256];
-            sprintf(landmark_sub_dir, "%s/%03d", landmark_dir, landmark_count);
-            mkdir(landmark_sub_dir, 0777);
-
-            char landmark_sub_list_filename[256];
-            sprintf(landmark_sub_list_filename, "%s/landmark_detail.txt", landmark_sub_dir);
-            FILE *landmark_sub_file = fopen(landmark_sub_list_filename, "w");
-
-            // record landmark in pre_frame index
-            fprintf(landmark_sub_file, "%s.jpg %s %d %d %d %d\n",
-                    get_name_from_frame_index(cur_frame_index).c_str(),
-                    get_name_from_frame_index(cur_frame_index).c_str(),
-                    pre_rect.x, pre_rect.y,
-                    pre_rect.x + pre_rect.width, pre_rect.y + pre_rect.height);
-
-            RectTools::limit(pre_rect, frame_width, frame_height);
-            cv::Mat ROI = pre_frame(pre_rect);
-
-            char landmark_region_filename[256];
-            sprintf(landmark_region_filename, "%s/%s.jpg", landmark_sub_dir,
-                    get_name_from_frame_index(cur_frame_index).c_str());
-            cv::imwrite(landmark_region_filename, ROI);
-
-            printf("Processing frame %d\n", cur_frame_index);
-
-            cur_frame_index--;
-            //向前跟踪
-            while (cur_frame_index > 0) {
-                cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
-                update_rect = tracker.update(next_frame);
-
-                pre_rect = update_rect;
-                pre_frame = next_frame;
-
-                if (update_rect.x > constant.tracker_ignore_threshold
-                    && update_rect.x + update_rect.width
-                       < frame_width - constant.tracker_ignore_threshold
-                    && update_rect.y + update_rect.height / 2 < frame_height / 2) {
-                    // record landmark
-                    fprintf(landmark_sub_file, "%s.jpg %s %d %d %d %d\n",
-                            get_name_from_frame_index(cur_frame_index).c_str(),
-                            get_name_from_frame_index(cur_frame_index).c_str(),
-                            pre_rect.x, pre_rect.y,
-                            pre_rect.x + pre_rect.width, pre_rect.y + pre_rect.height);
-
-                    RectTools::limit(pre_rect, frame_width, frame_height);
-                    cv::Mat ROI = pre_frame(pre_rect);
-
-                    char landmark_region_filename[256];
-                    sprintf(landmark_region_filename, "%s/%s.jpg", landmark_sub_dir,
-                            get_name_from_frame_index(cur_frame_index).c_str());
-                    cv::imwrite(landmark_region_filename, ROI);
-
-                    printf("Processing frame %d\n", cur_frame_index);
-                } else {
-                    break;
-                }
-
-                cur_frame_index--;
-            }
-
-            cur_frame_index = pre_frame_index + 1;
-            pre_frame = load_frame(testcase_dir_name, pre_frame_index);
-            tracker.init(regions[region_index].rect, pre_frame);
-
-            //向后跟踪
-            while (cur_frame_index <= total_frame) {
-                cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
-                update_rect = tracker.update(next_frame);
-
-                pre_rect = update_rect;
-                pre_frame = next_frame;
-
-                if (update_rect.x > constant.tracker_ignore_threshold
-                    && update_rect.x + update_rect.width
-                       < frame_width - constant.tracker_ignore_threshold
-                    && update_rect.y + update_rect.height / 2 < frame_height / 2) {
-                    // record landmark
-                    fprintf(landmark_sub_file, "%s.jpg %s %d %d %d %d\n",
-                            get_name_from_frame_index(cur_frame_index).c_str(),
-                            get_name_from_frame_index(cur_frame_index).c_str(),
-                            pre_rect.x, pre_rect.y,
-                            pre_rect.x + pre_rect.width, pre_rect.y + pre_rect.height);
-
-                    RectTools::limit(pre_rect, frame_width, frame_height);
-                    cv::Mat ROI = pre_frame(pre_rect);
-
-                    char landmark_region_filename[256];
-                    sprintf(landmark_region_filename, "%s/%s.jpg", landmark_sub_dir,
-                            get_name_from_frame_index(cur_frame_index).c_str());
-                    cv::imwrite(landmark_region_filename, ROI);
-
-                    printf("Processing frame %d\n", cur_frame_index);
-                } else {
-                    break;
-                }
-
-                cur_frame_index++;
-            }
-
-            fclose(landmark_sub_file);
-
-            if (max_frame_index < cur_frame_index) {
-                max_frame_index = cur_frame_index;
-            }
-
-            region_index++;
-        }
-
-        if (is_process) {
-            pre_frame_index = max_frame_index + 1;
-        } else {
-            pre_frame_index += constant.tracker_jump_length;
-        }
-    }
-
-    fprintf(landmark_list_file, "RCNN counter: %d\n", rcnn_counter);
-    rcnn_counter = 0;
-    frame_names.clear();
-    frames.clear();
-    fclose(landmark_list_file);
-    return;
-}
-
-void keyframe_init(char *filename){
-    rcnn_counter = 0;
-
-    char front_dir_name[256];
-    sprintf(front_dir_name, "%s/front/", filename);
-
-    int frame_count = 0;
-
-    vector<int> frames_index;
-
-    DIR *dir;
-    struct dirent *ent;
-    if ((dir = opendir(front_dir_name)) != NULL) {
-        while ((ent = readdir(dir)) != NULL) {
-            if (strcmp(ent->d_name, ".") != 0 &&
-                strcmp(ent->d_name, "..") != 0) {
-                frame_count++;
-                char image_name[256];
-                strcpy(image_name, ent->d_name);
-                long length = strlen(image_name);
-                image_name[length - 4] = '\0';
-                frames_index.push_back(atoi(image_name));
-            }
-        }
-    }
-    closedir(dir);
-
-    sort(frames_index.begin(), frames_index.end());
-
-    for(int index = 0; index < frame_count; index++) {
-        int frame_index = frames_index[index];
-        char image_name[256];
-        sprintf(image_name, "%s/%03d.jpg", front_dir_name, frame_index);
-        cv::Mat image = cv::imread(image_name, CV_LOAD_IMAGE_COLOR);
-        frames.push_back(image);
-
-        char filename[256];
-        sprintf(filename, "%03d.jpg", frame_index);
-
-        string name = filename;
-        frame_names.push_back(name);
-
-        printf("Loaded frame %d\n", frame_names.size());
-    }
-
-//    char rcnn_dir[256];
-//    sprintf(rcnn_dir, "%s/rcnn_ground_truth", filename);
-//    remove_dir(rcnn_dir);
-//    mkdir(rcnn_dir, 0777);
-}
 
 
 double *load_image(const char *filename, int &rows, int &cols) {
@@ -923,6 +502,7 @@ void extract_videos(const char *video_filename) {
     file.close();
     cap.release();
 }
+
 
 
 #endif //EDGEDETECTION_TOOLS_H

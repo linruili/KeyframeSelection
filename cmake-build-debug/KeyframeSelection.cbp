@@ -91,6 +91,12 @@
 		<Unit filename="/home/HAVIL/KeyframeSelection/constant.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/keyframe_init.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/keyframe_selection_update.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/main.cpp">
 			<Option target="KeyframeSelection"/>
 		</Unit>
