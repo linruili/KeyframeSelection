@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/HAVIL/KeyframeSelection/Myserver.cpp" "/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o"
   "/home/HAVIL/KeyframeSelection/main.cpp" "/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/main.cpp.o"
   "/home/HAVIL/KeyframeSelection/tracker/fhog.cpp" "/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o"
   "/home/HAVIL/KeyframeSelection/tracker/kcftracker.cpp" "/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o"

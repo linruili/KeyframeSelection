@@ -5,16 +5,28 @@
 #ifndef KEYFRAMESELECTION_KEYFRAME_INIT_H
 #define KEYFRAMESELECTION_KEYFRAME_INIT_H
 
-#include "tools.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <vector>
+#include <string>
+#include <ctime>
+#include <kcftracker.hpp>
+#include <recttools.hpp>
+#include <cstdarg>
+#include <fstream>
+#include <algorithm>
+#include <dirent.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <regex>
+#include "constant.h"
 
-//#include <iostream>
-//#include <vector>
-//#include "constant.h"
-//#include <string>
-//#include <opencv2/core/core.hpp>
-//#include <opencv2/highgui/highgui.hpp>
+using namespace std;
 
-
+Constant constant;
+int rcnn_counter = 0;
+vector<cv::Mat> frames;
+vector<string> frame_names;
 
 void keyframe_init(char *filename)
 {
@@ -62,8 +74,8 @@ void keyframe_init(char *filename)
 
         string name = filename;
         frame_names.push_back(name);
-
-        printf("Loaded frame %d\n", frame_names.size());
+        cout<<"Loaded frame "<<frame_names.size()<<endl;
+        //printf("Loaded frame %d\n", frame_names.size());
     }
 }
 

@@ -88,6 +88,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/HAVIL/KeyframeSelection/Myserver.cpp">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/Myserver.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/constant.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
@@ -98,6 +104,9 @@
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/main.cpp">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/run_rcnn_procedure.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/tools.h">

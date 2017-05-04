@@ -6,15 +6,19 @@
 #define KEYFRAMESELECTION_KEYFRAME_SELECTION_UPDATE_H
 
 #include "tools.h"
+#include "run_rcnn_procedure.h"
 
 void keyframe_selection_update(char *testcase_dir_name) {
     /*
      * 所涉及到的目录
-     * front_dir = testcase_dir_name + /front
+     * front_dir = testcase_dir_name + front
      * landmark_dir = testcase_dir_name + landmark
+     * landmark_sub_dir = landmark_dir + landmark_count
      *
      * 文件
      * landmark_list_file = landmark_dir + /landmark.txt
+     * landmark_sub_list_filename = landmark_sub_dir + /landmark_detail.txt
+     * landmark_region_filename = landmark_sub_dir + /region_index.jpg
      * */
     int pre_frame_index = 1;
     int max_frame_index = 1;
@@ -93,6 +97,7 @@ void keyframe_selection_update(char *testcase_dir_name) {
                     pre_rect.x + pre_rect.width, pre_rect.y + pre_rect.height);
 
             RectTools::limit(pre_rect, frame_width, frame_height);
+            //convert Rect to Mat
             cv::Mat ROI = pre_frame(pre_rect);
 
             char landmark_region_filename[256];
@@ -104,7 +109,8 @@ void keyframe_selection_update(char *testcase_dir_name) {
 
             cur_frame_index--;
             //向前跟踪
-            while (cur_frame_index > 0) {
+            while (cur_frame_index > 0)
+            {
                 cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
                 update_rect = tracker.update(next_frame);
 
@@ -114,7 +120,8 @@ void keyframe_selection_update(char *testcase_dir_name) {
                 if (update_rect.x > constant.tracker_ignore_threshold
                     && update_rect.x + update_rect.width
                        < frame_width - constant.tracker_ignore_threshold
-                    && update_rect.y + update_rect.height / 2 < frame_height / 2) {
+                    && update_rect.y + update_rect.height / 2 < frame_height / 2)
+                {
                     // record landmark
                     fprintf(landmark_sub_file, "%s.jpg %s %d %d %d %d\n",
                             get_name_from_frame_index(cur_frame_index).c_str(),
@@ -131,10 +138,10 @@ void keyframe_selection_update(char *testcase_dir_name) {
                     cv::imwrite(landmark_region_filename, ROI);
 
                     printf("Processing frame %d\n", cur_frame_index);
-                } else {
+                } else
+                {
                     break;
                 }
-
                 cur_frame_index--;
             }
 
@@ -143,7 +150,8 @@ void keyframe_selection_update(char *testcase_dir_name) {
             tracker.init(regions[region_index].rect, pre_frame);
 
             //向后跟踪
-            while (cur_frame_index <= total_frame) {
+            while (cur_frame_index <= total_frame)
+            {
                 cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
                 update_rect = tracker.update(next_frame);
 
@@ -153,7 +161,8 @@ void keyframe_selection_update(char *testcase_dir_name) {
                 if (update_rect.x > constant.tracker_ignore_threshold
                     && update_rect.x + update_rect.width
                        < frame_width - constant.tracker_ignore_threshold
-                    && update_rect.y + update_rect.height / 2 < frame_height / 2) {
+                    && update_rect.y + update_rect.height / 2 < frame_height / 2)
+                {
                     // record landmark
                     fprintf(landmark_sub_file, "%s.jpg %s %d %d %d %d\n",
                             get_name_from_frame_index(cur_frame_index).c_str(),
@@ -170,7 +179,8 @@ void keyframe_selection_update(char *testcase_dir_name) {
                     cv::imwrite(landmark_region_filename, ROI);
 
                     printf("Processing frame %d\n", cur_frame_index);
-                } else {
+                } else
+                {
                     break;
                 }
 
@@ -179,18 +189,17 @@ void keyframe_selection_update(char *testcase_dir_name) {
 
             fclose(landmark_sub_file);
 
-            if (max_frame_index < cur_frame_index) {
+            if (max_frame_index < cur_frame_index)
                 max_frame_index = cur_frame_index;
-            }
 
             region_index++;
         }
 
-        if (is_process) {
+        if (is_process)
             pre_frame_index = max_frame_index + 1;
-        } else {
+        else
             pre_frame_index += constant.tracker_jump_length;
-        }
+
     }
 
     fprintf(landmark_list_file, "RCNN counter: %d\n", rcnn_counter);

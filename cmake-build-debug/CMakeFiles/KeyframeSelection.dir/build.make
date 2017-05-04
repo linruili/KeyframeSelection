@@ -81,9 +81,33 @@ CMakeFiles/KeyframeSelection.dir/main.cpp.o.provides: CMakeFiles/KeyframeSelecti
 CMakeFiles/KeyframeSelection.dir/main.cpp.o.provides.build: CMakeFiles/KeyframeSelection.dir/main.cpp.o
 
 
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o: CMakeFiles/KeyframeSelection.dir/flags.make
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o: ../Myserver.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o -c /home/HAVIL/KeyframeSelection/Myserver.cpp
+
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KeyframeSelection.dir/Myserver.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/HAVIL/KeyframeSelection/Myserver.cpp > CMakeFiles/KeyframeSelection.dir/Myserver.cpp.i
+
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KeyframeSelection.dir/Myserver.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/HAVIL/KeyframeSelection/Myserver.cpp -o CMakeFiles/KeyframeSelection.dir/Myserver.cpp.s
+
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.requires:
+
+.PHONY : CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.requires
+
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.provides: CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.requires
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.provides.build
+.PHONY : CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.provides
+
+CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.provides.build: CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o
+
+
 CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o: CMakeFiles/KeyframeSelection.dir/flags.make
 CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o: ../tracker/fhog.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o -c /home/HAVIL/KeyframeSelection/tracker/fhog.cpp
 
 CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o.provides.build: CMakeFiles/K
 
 CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o: CMakeFiles/KeyframeSelection.dir/flags.make
 CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o: ../tracker/kcftracker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o -c /home/HAVIL/KeyframeSelection/tracker/kcftracker.cpp
 
 CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o.provides.build: CMakeF
 
 CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o: CMakeFiles/KeyframeSelection.dir/flags.make
 CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o: ../tracker/runtracker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o -c /home/HAVIL/KeyframeSelection/tracker/runtracker.cpp
 
 CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.i: cmake_force
@@ -156,6 +180,7 @@ CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o.provides.build: CMakeF
 # Object files for target KeyframeSelection
 KeyframeSelection_OBJECTS = \
 "CMakeFiles/KeyframeSelection.dir/main.cpp.o" \
+"CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o" \
 "CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o" \
 "CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o" \
 "CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o"
@@ -164,6 +189,7 @@ KeyframeSelection_OBJECTS = \
 KeyframeSelection_EXTERNAL_OBJECTS =
 
 ../KeyframeSelection: CMakeFiles/KeyframeSelection.dir/main.cpp.o
+../KeyframeSelection: CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o
 ../KeyframeSelection: CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o
 ../KeyframeSelection: CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o
 ../KeyframeSelection: CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o
@@ -219,7 +245,7 @@ KeyframeSelection_EXTERNAL_OBJECTS =
 ../KeyframeSelection: /usr/local/lib/libopencv_hal.a
 ../KeyframeSelection: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
 ../KeyframeSelection: CMakeFiles/KeyframeSelection.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../KeyframeSelection"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/HAVIL/KeyframeSelection/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ../KeyframeSelection"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KeyframeSelection.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -228,6 +254,7 @@ CMakeFiles/KeyframeSelection.dir/build: ../KeyframeSelection
 .PHONY : CMakeFiles/KeyframeSelection.dir/build
 
 CMakeFiles/KeyframeSelection.dir/requires: CMakeFiles/KeyframeSelection.dir/main.cpp.o.requires
+CMakeFiles/KeyframeSelection.dir/requires: CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o.requires
 CMakeFiles/KeyframeSelection.dir/requires: CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o.requires
 CMakeFiles/KeyframeSelection.dir/requires: CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o.requires
 CMakeFiles/KeyframeSelection.dir/requires: CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o.requires

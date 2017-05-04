@@ -123,6 +123,33 @@ KeyframeSelection/fast:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/build
 .PHONY : KeyframeSelection/fast
 
+Myserver.o: Myserver.cpp.o
+
+.PHONY : Myserver.o
+
+# target to build an object file
+Myserver.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o
+.PHONY : Myserver.cpp.o
+
+Myserver.i: Myserver.cpp.i
+
+.PHONY : Myserver.i
+
+# target to preprocess a source file
+Myserver.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/Myserver.cpp.i
+.PHONY : Myserver.cpp.i
+
+Myserver.s: Myserver.cpp.s
+
+.PHONY : Myserver.s
+
+# target to generate assembly for a file
+Myserver.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/Myserver.cpp.s
+.PHONY : Myserver.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... KeyframeSelection"
+	@echo "... Myserver.o"
+	@echo "... Myserver.i"
+	@echo "... Myserver.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
