@@ -29,11 +29,15 @@ private:
     struct sockaddr_in remote_addr; // 客户端地址信息
     long flag = 1;
     char rcnn_result_dir[1024];
+    int mes_index=0;
 
 public:
+    ~Myserver();
     void start();
     void send_mes(char *mes, int len);
     void set_dir(char *dir);
+    void rec_mes(char *rec_chars);
+    void close_socket();
 
 
 };

@@ -7,8 +7,10 @@
 
 #include "tools.h"
 #include "run_rcnn_procedure.h"
+#include "Myserver.h"
 
-void keyframe_selection_update(char *testcase_dir_name) {
+void keyframe_selection_update(char *testcase_dir_name, Myserver myserver)
+{
     /*
      * 所涉及到的目录
      * front_dir = testcase_dir_name + front
@@ -36,6 +38,11 @@ void keyframe_selection_update(char *testcase_dir_name) {
     remove_dir(landmark_dir);
     mkdir(landmark_dir, 0777);
 
+    char rcnn_result_dir[1024];
+    sprintf(rcnn_result_dir, "%s/rcnn_result", testcase_dir_name);
+    remove_dir(rcnn_result_dir);
+    mkdir(rcnn_result_dir, 0777);
+
     char landmark_list_filename[256];
     sprintf(landmark_list_filename, "%s/landmark.txt", landmark_dir);
     FILE *landmark_list_file = fopen(landmark_list_filename, "w");
@@ -47,7 +54,7 @@ void keyframe_selection_update(char *testcase_dir_name) {
 
     while (pre_frame_index < total_frame)
     {
-        vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index);
+        vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index,myserver);
         sort(regions.begin(), regions.end(), landmark_comp);
 
         cv::Mat pre_frame = load_frame(testcase_dir_name, pre_frame_index);

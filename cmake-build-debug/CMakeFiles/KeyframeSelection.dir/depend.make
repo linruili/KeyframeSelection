@@ -10,10 +10,7 @@ CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../tracker/tracker.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../Myserver.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../constant.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../keyframe_init.h
-CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../keyframe_selection_update.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../main.cpp
-CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../run_rcnn_procedure.h
-CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../tools.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: /usr/local/include/opencv/cxcore.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: /usr/local/include/opencv2/calib3d.hpp
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: /usr/local/include/opencv2/calib3d/calib3d_c.h
