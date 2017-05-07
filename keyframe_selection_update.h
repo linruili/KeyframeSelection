@@ -9,7 +9,7 @@
 #include "run_rcnn_procedure.h"
 #include "Myserver.h"
 
-void keyframe_selection_update(char *testcase_dir_name, Myserver myserver)
+void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
 {
     /*
      * 所涉及到的目录
@@ -52,6 +52,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver myserver)
            landmark_list_filename);
     //^********************初始化路径和文件*****************************
 
+
+
     while (pre_frame_index < total_frame)
     {
         vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index,myserver);
@@ -66,13 +68,15 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver myserver)
         int region_index = 0;
         bool is_process = false;
 
-        while (region_index < regions.size()) {
+        while (region_index < regions.size())
+        {
             //过滤掉region在图片下半部分的情况
             if ((regions[region_index].rect.x < constant.tracker_ignore_start_threshold
                  || regions[region_index].rect.y + regions[region_index].rect.height / 2
                     >= frame_height / 2
                  || regions[region_index].rect.x + regions[region_index].rect.width
-                    > frame_width - constant.tracker_ignore_start_threshold)) {
+                    > frame_width - constant.tracker_ignore_start_threshold))
+            {
                 region_index++;
                 continue;
             }

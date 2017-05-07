@@ -13,8 +13,26 @@ int main()
 {
     Myserver myserver;
     myserver.start();
+//    std::vector<Landmark> result;
+//    sleep(5);
+//    char image_name[1024] = "/home/TestSet/0209_gogo_dataset/GoPro-vedio/part/testcase1/front/001.jpg#1";
+//    string str = image_name;
+//    myserver.send_mes(image_name, str.size());
+//
+//    char keyframe_prob_filename[1024];
+//    myserver.rec_mes(keyframe_prob_filename);
+//    readFromFile(keyframe_prob_filename, result);
+//
+//    sleep(5);
+//    char image_name2[1024] = "/home/TestSet/0209_gogo_dataset/GoPro-vedio/part/testcase1/front/031.jpg#2";
+//    str = image_name;
+//    myserver.send_mes(image_name2, str.size());
+//
+//    myserver.rec_mes(keyframe_prob_filename);
+//    readFromFile(keyframe_prob_filename, result);
 
-    for (int i = 1; i <= 1; i++) //原来i=12
+
+    for (int i = 1; i <= 2; i++) //原来i=12
     {
     	char filename[256];
     	sprintf(filename, "/home/TestSet/0209_gogo_dataset/GoPro-vedio/part/testcase%d", i);
@@ -23,10 +41,8 @@ int main()
     	keyframe_selection_update(filename,myserver);
         printf("Processing testcase Done***** \n%s\n", filename);
 	}
-
     return 0;
 }
-
 /*
 int main(int argc, char* argv[])
 {
