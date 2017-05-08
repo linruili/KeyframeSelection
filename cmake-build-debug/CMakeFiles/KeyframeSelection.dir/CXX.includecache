@@ -75,6 +75,8 @@ regex
 -
 constant.h
 /home/HAVIL/KeyframeSelection/constant.h
+sys/timeb.h
+-
 
 /home/HAVIL/KeyframeSelection/keyframe_selection_update.h
 tools.h
@@ -104,6 +106,8 @@ tools.h
 Myserver.h
 /home/HAVIL/KeyframeSelection/Myserver.h
 sys/wait.h
+-
+sys/timeb.h
 -
 
 /home/HAVIL/KeyframeSelection/tools.h

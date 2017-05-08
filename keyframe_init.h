@@ -20,6 +20,7 @@
 #include <sys/stat.h>
 #include <regex>
 #include "constant.h"
+#include <sys/timeb.h>
 
 using namespace std;
 
@@ -61,6 +62,9 @@ void keyframe_init(char *filename)
 
     sort(frames_index.begin(), frames_index.end());
 
+    timeb t1,t2;
+    ftime(&t1);
+    cout<<"Loaded frames... "<<endl;
     for(int index = 0; index < frame_count; index++)
     {
         int frame_index = frames_index[index];
@@ -74,9 +78,10 @@ void keyframe_init(char *filename)
 
         string name = filename;
         frame_names.push_back(name);
-        cout<<"Loaded frame "<<frame_names.size()<<endl;
-        //printf("Loaded frame %d\n", frame_names.size());
     }
+    ftime(&t2);
+    cout<<"frame_count = "<<frame_count<<endl;
+    cout<<"runtime = "<<(t2.time-t1.time)*1000+t2.millitm-t1.millitm<<" ms"<<endl;
 }
 
 #endif //KEYFRAMESELECTION_KEYFRAME_INIT_H

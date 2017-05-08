@@ -11,6 +11,7 @@
 #include "tools.h"
 #include "Myserver.h"
 #include <sys/wait.h>
+#include <sys/timeb.h>
 
 void readFromFile(char *keyframe_prob_filename, std::vector<Landmark> &result)
 {
@@ -28,7 +29,7 @@ void readFromFile(char *keyframe_prob_filename, std::vector<Landmark> &result)
         vector<string> region_name_path;
         split(region_name_str, "/", region_name_path);
         strcpy(landmark.filename, region_name_path[region_name_path.size() - 1].c_str());
-        printf("landmark filename %s\n rect: %d %d %d %d\n", frame_name, rect.x, rect.y, rect.width, rect.height);
+        //printf("landmark filename %s\n rect: %d %d %d %d\n", frame_name, rect.x, rect.y, rect.width, rect.height);
         result.push_back(landmark);
     }
     fclose(keyframe_prob_file);
@@ -57,14 +58,19 @@ vector<Landmark> run_rcnn_procedure(char *testcase_dir, int frame_index, Myserve
         sprintf(image_name, "%s/front/%03d.jpg#%d", testcase_dir, frame_index, rcnn_counter);
         string str = image_name;
 
+        cout<<"send string = "<<str<<endl;
+        timeb t1,t2;
+        ftime(&t1);
         myserver.send_mes(image_name, str.size());
         //wait(NULL);
-        cout<<"send string = "<<str<<endl;
         char keyframe_prob_filename[1024];
         myserver.rec_mes(keyframe_prob_filename);
+        ftime(&t2);
+        cout<<"RCNN runtime = "<<(t2.time-t1.time)*1000+t2.millitm-t1.millitm<<" ms"<<endl;
+
         readFromFile(keyframe_prob_filename, result);
 
-        sleep(5);
+        //sleep(5);
     }
 
     return result;

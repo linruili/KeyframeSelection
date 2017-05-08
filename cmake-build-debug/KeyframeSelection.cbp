@@ -94,6 +94,9 @@
 		<Unit filename="/home/HAVIL/KeyframeSelection/Myserver.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/classification.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/constant.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>

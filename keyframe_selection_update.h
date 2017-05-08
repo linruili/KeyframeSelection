@@ -89,7 +89,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
             cv::Rect pre_rect, update_rect;
             pre_rect = regions[region_index].rect;
 
-            printf("find landmark %03d\n", ++landmark_count);
+            printf("find landmark %03d, region %d\n", ++landmark_count, region_index);
             fprintf(landmark_list_file, "%03d\n", landmark_count);
 
             char landmark_sub_dir[256];
@@ -116,10 +116,10 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
                     get_name_from_frame_index(cur_frame_index).c_str());
             cv::imwrite(landmark_region_filename, ROI);
 
-            printf("Processing frame %d\n", cur_frame_index);
+            printf("Processing frame %d, start KCF...\n", cur_frame_index);
 
             cur_frame_index--;
-            //向前跟踪
+            //向后跟踪
             while (cur_frame_index > 0)
             {
                 cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
@@ -148,19 +148,19 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
                             get_name_from_frame_index(cur_frame_index).c_str());
                     cv::imwrite(landmark_region_filename, ROI);
 
-                    printf("Processing frame %d\n", cur_frame_index);
                 } else
                 {
                     break;
                 }
                 cur_frame_index--;
             }
+            printf("backward to frame %d\n", cur_frame_index);
 
             cur_frame_index = pre_frame_index + 1;
             pre_frame = load_frame(testcase_dir_name, pre_frame_index);
             tracker.init(regions[region_index].rect, pre_frame);
 
-            //向后跟踪
+            //向前跟踪
             while (cur_frame_index <= total_frame)
             {
                 cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
@@ -189,7 +189,6 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
                             get_name_from_frame_index(cur_frame_index).c_str());
                     cv::imwrite(landmark_region_filename, ROI);
 
-                    printf("Processing frame %d\n", cur_frame_index);
                 } else
                 {
                     break;
@@ -197,6 +196,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
 
                 cur_frame_index++;
             }
+            printf("forward to frame %d\n", cur_frame_index);
 
             fclose(landmark_sub_file);
 
