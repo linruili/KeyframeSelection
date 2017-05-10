@@ -8,8 +8,9 @@
 #include "tools.h"
 #include "run_rcnn_procedure.h"
 #include "Myserver.h"
+#include "classification.h"
 
-void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
+void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier)
 {
     /*
      * 所涉及到的目录
@@ -19,6 +20,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
      *
      * 文件
      * landmark_list_file = landmark_dir + /landmark.txt
+     * andmark_classification_filename = landmark_dir + /landmark_classification.txt
      * landmark_sub_list_filename = landmark_sub_dir + /landmark_detail.txt
      * landmark_region_filename = landmark_sub_dir + /region_index.jpg
      * */
@@ -38,7 +40,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
     remove_dir(landmark_dir);
     mkdir(landmark_dir, 0777);
 
-    char rcnn_result_dir[1024];
+    char rcnn_result_dir[256];
     sprintf(rcnn_result_dir, "%s/rcnn_result", testcase_dir_name);
     remove_dir(rcnn_result_dir);
     mkdir(rcnn_result_dir, 0777);
@@ -46,6 +48,11 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
     char landmark_list_filename[256];
     sprintf(landmark_list_filename, "%s/landmark.txt", landmark_dir);
     FILE *landmark_list_file = fopen(landmark_list_filename, "w");
+
+    char landmark_classification_filename[256];
+    sprintf(landmark_classification_filename, "%s/landmark_classification.txt", landmark_dir);
+    FILE *landmark_classification_file = fopen(landmark_classification_filename, "w");
+
     int landmark_count = 0;
 
     printf("front dir: %s \nlandmark dir: %s \nlandmark_list_filename: %s\n", front_dir, landmark_dir,
@@ -204,6 +211,28 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
                 max_frame_index = cur_frame_index;
 
             region_index++;
+
+
+            // record landmark_classification
+            char predictFile[1024];
+            sprintf(predictFile, "%s/%s.jpg", landmark_sub_dir, get_name_from_frame_index(cur_frame_index-1).c_str());
+
+            std::cout << "---------- Prediction for "
+                      << predictFile << " ----------" << std::endl;
+
+            cv::Mat predictImg = cv::imread(predictFile, -1);
+            CHECK(!predictImg.empty()) << "Unable to decode image " << predictFile;
+            std::vector<Prediction> predictions = classifier.Classify(predictImg);
+
+            /* Print the top N predictions. */
+            size_t i = 0;
+            Prediction p = predictions[i];
+            std::cout << std::fixed << std::setprecision(4) << p.second << " - \""
+                      << p.first << "\"" << std::endl;
+
+            fprintf(landmark_classification_file, "%d %s %f\n",
+                    landmark_count, p.first.c_str(), p.second);
+
         }
 
         if (is_process)
@@ -212,6 +241,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver)
             pre_frame_index += constant.tracker_jump_length;
 
     }
+
 
     fprintf(landmark_list_file, "RCNN counter: %d\n", rcnn_counter);
     rcnn_counter = 0;

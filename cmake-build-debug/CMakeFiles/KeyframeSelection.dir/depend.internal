@@ -9,12 +9,97 @@ CMakeFiles/KeyframeSelection.dir/main.cpp.o
  ../tracker/recttools.hpp
  ../tracker/tracker.h
  /home/HAVIL/KeyframeSelection/Myserver.h
+ /home/HAVIL/KeyframeSelection/classification.h
  /home/HAVIL/KeyframeSelection/constant.h
  /home/HAVIL/KeyframeSelection/keyframe_init.h
  /home/HAVIL/KeyframeSelection/keyframe_selection_update.h
  /home/HAVIL/KeyframeSelection/main.cpp
  /home/HAVIL/KeyframeSelection/run_rcnn_procedure.h
  /home/HAVIL/KeyframeSelection/tools.h
+ /home/download/caffe-master/build/src/caffe/proto/caffe.pb.h
+ /home/download/caffe-master/include/caffe/blob.hpp
+ /home/download/caffe-master/include/caffe/caffe.hpp
+ /home/download/caffe-master/include/caffe/common.hpp
+ /home/download/caffe-master/include/caffe/filler.hpp
+ /home/download/caffe-master/include/caffe/internal_thread.hpp
+ /home/download/caffe-master/include/caffe/layer.hpp
+ /home/download/caffe-master/include/caffe/layer_factory.hpp
+ /home/download/caffe-master/include/caffe/net.hpp
+ /home/download/caffe-master/include/caffe/parallel.hpp
+ /home/download/caffe-master/include/caffe/solver.hpp
+ /home/download/caffe-master/include/caffe/solver_factory.hpp
+ /home/download/caffe-master/include/caffe/syncedmem.hpp
+ /home/download/caffe-master/include/caffe/util/benchmark.hpp
+ /home/download/caffe-master/include/caffe/util/blocking_queue.hpp
+ /home/download/caffe-master/include/caffe/util/cudnn.hpp
+ /home/download/caffe-master/include/caffe/util/device_alternate.hpp
+ /home/download/caffe-master/include/caffe/util/format.hpp
+ /home/download/caffe-master/include/caffe/util/io.hpp
+ /home/download/caffe-master/include/caffe/util/math_functions.hpp
+ /home/download/caffe-master/include/caffe/util/mkl_alternate.hpp
+ /home/download/caffe-master/include/caffe/util/nccl.hpp
+ /home/download/caffe-master/include/caffe/util/upgrade_proto.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/builtin_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/channel_descriptor.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/common_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/crt/func_macro.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuComplex.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cublas_api.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cublas_v2.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda_device_runtime_api.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda_fp16.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda_runtime.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda_runtime_api.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda_surface_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cuda_texture_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/cudnn.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/curand.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_atomic_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_atomic_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_double_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_double_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_functions_decls.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_launch_parameters.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/device_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/driver_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/driver_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/host_config.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/host_defines.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/math_constants.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/math_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/math_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/math_functions_dbl_ptx3.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/math_functions_dbl_ptx3.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_20_atomic_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_20_atomic_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_20_intrinsics.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_20_intrinsics.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_30_intrinsics.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_30_intrinsics.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_32_atomic_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_32_atomic_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_32_intrinsics.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_32_intrinsics.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_35_atomic_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/sm_35_intrinsics.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/surface_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/surface_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/surface_indirect_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/surface_indirect_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/surface_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/texture_fetch_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/texture_fetch_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/texture_indirect_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/texture_indirect_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/texture_types.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/vector_functions.h
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/vector_functions.hpp
+ /usr/local/cuda-7.5/targets/x86_64-linux/include/vector_types.h
+ /usr/local/include/cblas.h
+ /usr/local/include/openblas_config.h
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -52,6 +137,7 @@ CMakeFiles/KeyframeSelection.dir/main.cpp.o
  /usr/local/include/opencv2/imgcodecs.hpp
  /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
  /usr/local/include/opencv2/imgproc.hpp
+ /usr/local/include/opencv2/imgproc/imgproc.hpp
  /usr/local/include/opencv2/imgproc/imgproc_c.h
  /usr/local/include/opencv2/imgproc/types_c.h
  /usr/local/include/opencv2/ml.hpp

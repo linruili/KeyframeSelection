@@ -6,42 +6,33 @@
 #include "keyframe_init.h"
 #include "keyframe_selection_update.h"
 #include "Myserver.h"
+#include "classification.h"
 
-using namespace std;
 
-int main()
+
+int main(int argc, char** argv)
 {
+    ::google::InitGoogleLogging(argv[0]);
+    string model_file   = "/home/download/caffe-master/models/GoogleNet/deploy.prototxt";
+    string trained_file = "/home/download/caffe-master/models/GoogleNet/googlenet_iter_10000.caffemodel";
+    string mean_file    = "/home/download/caffe-master/models/GoogleNet/imagenet_mean.binaryproto";
+    string label_file   = "/home/download/caffe-master/models/GoogleNet/lable.txt";
+    Classifier classifier(model_file, trained_file, mean_file, label_file);
+
+
     Myserver myserver;
     myserver.start();
 
-
-
-    for (int i = 1; i <= 1; i++) //Ô­À´i=12
+    for (int i = 1; i <= 1; i++) //åŽŸæ¥i=12
     {
     	char filename[256];
     	sprintf(filename, "/home/TestSet/0209_gogo_dataset/GoPro-vedio/part/testcase%d", i);
     	printf("Processing testcase %s\n", filename);
         keyframe_init(filename);
-    	keyframe_selection_update(filename,myserver);
+    	keyframe_selection_update(filename, myserver, classifier);
         printf("Processing testcase Done***** \n%s\n", filename);
 	}
+
+
     return 0;
 }
-/*
-int main(int argc, char* argv[])
-{
-     two arguments
-     argv[1] is testcase dir
-     argv[2] is rcnn threshold
-
-    if(argc != 3)
-    {
-        cout << "with two arguments: testcase_directory threshold\n" << endl;
-        return 1;
-    }
-    keyframe_init(argv[1], argv[2]);
-    keyframe_selection_update(argv[1]);
-    printf("Processing testcase Done***** \n%s\n", argv[1]);
-
-    return 0;
-}*/

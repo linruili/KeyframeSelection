@@ -44,6 +44,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DUSE_OPENCV"/>
+					<Add directory="/home/download/caffe-master/include"/>
+					<Add directory="/home/download/caffe-master/build/src"/>
+					<Add directory="/usr/local/cuda-7.5/targets/x86_64-linux/include"/>
 					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/home/HAVIL/KeyframeSelection/tracker"/>
@@ -69,6 +73,10 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-DUSE_OPENCV"/>
+					<Add directory="/home/download/caffe-master/include"/>
+					<Add directory="/home/download/caffe-master/build/src"/>
+					<Add directory="/usr/local/cuda-7.5/targets/x86_64-linux/include"/>
 					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/home/HAVIL/KeyframeSelection/tracker"/>
