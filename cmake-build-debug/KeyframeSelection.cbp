@@ -96,6 +96,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/HAVIL/KeyframeSelection/LCS.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/Myserver.cpp">
 			<Option target="KeyframeSelection"/>
 		</Unit>
@@ -112,6 +115,9 @@
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/keyframe_selection_update.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/landmark_identification.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/main.cpp">

@@ -9,6 +9,7 @@
 #include "run_rcnn_procedure.h"
 #include "Myserver.h"
 #include "classification.h"
+#include "landmark_identification.h"
 
 void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier)
 {
@@ -27,6 +28,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
     int pre_frame_index = 1;
     int max_frame_index = 1;
     int cur_frame_index = 1;
+    int frame_index_begin;
+    int frame_index_end;
 
     KCFTracker tracker;
 
@@ -77,6 +80,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
         while (region_index < regions.size())
         {
+            pre_frame = load_frame(testcase_dir_name, pre_frame_index);
             //过滤掉region在图片下半部分的情况
             if ((regions[region_index].rect.x < constant.tracker_ignore_start_threshold
                  || regions[region_index].rect.y + regions[region_index].rect.height / 2
@@ -126,6 +130,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             printf("Processing frame %d, start KCF...\n", cur_frame_index);
 
             cur_frame_index--;
+
             //向后跟踪
             while (cur_frame_index > 0)
             {
@@ -161,7 +166,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
                 }
                 cur_frame_index--;
             }
-            printf("backward to frame %d\n", cur_frame_index);
+            frame_index_begin = cur_frame_index+1;
+            printf("backward to frame %d\n", cur_frame_index+1);
 
             cur_frame_index = pre_frame_index + 1;
             pre_frame = load_frame(testcase_dir_name, pre_frame_index);
@@ -203,7 +209,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
                 cur_frame_index++;
             }
-            printf("forward to frame %d\n", cur_frame_index);
+            frame_index_end = cur_frame_index-1;
+            printf("forward to frame %d\n", cur_frame_index-1);
 
             fclose(landmark_sub_file);
 
@@ -212,26 +219,27 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
             region_index++;
 
+            //start landmark indentify
+
+            cout<<"frame_index_beigin "<<frame_index_begin<<" "<<"frame_index_end "<<frame_index_end<<endl;
+            int load_index;
+            vector<cv::Mat> imgs;
+            char predictFile[1024];
+            for(int i=1; i<=10; ++i)
+            {
+                load_index = (frame_index_end - frame_index_begin)/10*i+frame_index_begin;
+                sprintf(predictFile, "%s/%s.jpg", landmark_sub_dir, get_name_from_frame_index(load_index).c_str());
+                cv::Mat predictImg = cv::imread(predictFile, -1);
+                CHECK(!predictImg.empty()) << "Unable to decode image " << predictFile;
+                imgs.push_back(predictImg);
+            }
+            Prediction predict_landmark = landmark_identify(imgs, classifier);
 
             // record landmark_classification
-            char predictFile[1024];
-            sprintf(predictFile, "%s/%s.jpg", landmark_sub_dir, get_name_from_frame_index(cur_frame_index-1).c_str());
-
-            std::cout << "---------- Prediction for "
-                      << predictFile << " ----------" << std::endl;
-
-            cv::Mat predictImg = cv::imread(predictFile, -1);
-            CHECK(!predictImg.empty()) << "Unable to decode image " << predictFile;
-            std::vector<Prediction> predictions = classifier.Classify(predictImg);
-
-            /* Print the top N predictions. */
-            size_t i = 0;
-            Prediction p = predictions[i];
-            std::cout << std::fixed << std::setprecision(4) << p.second << " - \""
-                      << p.first << "\"" << std::endl;
+            printf("------predict for landmark %d -- %s -- %f\n", landmark_count, predict_landmark.first.c_str(), predict_landmark.second);
 
             fprintf(landmark_classification_file, "%d %s %f\n",
-                    landmark_count, p.first.c_str(), p.second);
+                    landmark_count, predict_landmark.first.c_str(), predict_landmark.second);
 
         }
 
