@@ -20,6 +20,16 @@ opencv2/opencv.hpp
 string
 -
 
+/home/HAVIL/KeyframeSelection/LCS.h
+iostream
+-
+string
+-
+vector
+-
+algorithm
+-
+
 /home/HAVIL/KeyframeSelection/Myserver.cpp
 Myserver.h
 /home/HAVIL/KeyframeSelection/Myserver.h
@@ -137,6 +147,8 @@ Myserver.h
 /home/HAVIL/KeyframeSelection/Myserver.h
 classification.h
 /home/HAVIL/KeyframeSelection/classification.h
+LCS.h
+/home/HAVIL/KeyframeSelection/LCS.h
 
 /home/HAVIL/KeyframeSelection/run_rcnn_procedure.h
 constant.h

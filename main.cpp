@@ -8,6 +8,7 @@
 #include "Myserver.h"
 #include "classification.h"
 
+#include "LCS.h"
 
 
 
@@ -33,7 +34,36 @@ int main(int argc, char** argv)
 //    	keyframe_selection_update(filename, myserver, classifier);
 //        printf("Processing testcase Done***** \n%s\n", filename);
 //	}
-    FILE *cluster_file = 
+
+
+    FILE *cluster_file = fopen("cluster.txt", "r");
+    vector<vector<string>> clusters;
+    int num;
+    while(fscanf(cluster_file, "%d", &num)!= EOF)
+    {
+        vector<string> cluster_line;
+        int each_landmark;
+        for(int i=1; i<=num; ++i)
+        {
+            fscanf(cluster_file, " %d", &each_landmark);
+            cluster_line.push_back(to_string(each_landmark));
+        }
+        clusters.push_back(cluster_line);
+    }
+
+    vector<string> landmark_raw;
+//    landmark_raw.push_back("2");
+//    landmark_raw.push_back("4");
+//    landmark_raw.push_back("50");
+    landmark_raw.push_back("1");
+    landmark_raw.push_back("3");
+
+    vector<string> result;
+    result = LCS(clusters, landmark_raw);
+    for(int i=0; i<result.size(); ++i)
+        cout<<result[i]<<" ";
+
+
 
     return 0;
 }

@@ -8,6 +8,7 @@ CMakeFiles/KeyframeSelection.dir/main.cpp.o
  ../tracker/kcftracker.hpp
  ../tracker/recttools.hpp
  ../tracker/tracker.h
+ /home/HAVIL/KeyframeSelection/LCS.h
  /home/HAVIL/KeyframeSelection/Myserver.h
  /home/HAVIL/KeyframeSelection/classification.h
  /home/HAVIL/KeyframeSelection/constant.h

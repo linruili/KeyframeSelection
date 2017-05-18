@@ -7,6 +7,7 @@ CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o: ../Myserver.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../tracker/kcftracker.hpp
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../tracker/recttools.hpp
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../tracker/tracker.h
+CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../LCS.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../Myserver.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../classification.h
 CMakeFiles/KeyframeSelection.dir/main.cpp.o: ../constant.h
