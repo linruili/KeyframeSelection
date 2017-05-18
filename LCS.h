@@ -12,8 +12,9 @@
 
 using namespace std;
 
-vector<string> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
+vector<int> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
 {
+    vector<int> result_index;
     int match_num[clusters.size()];//landmark_raw和每个cluster匹配到的个数
     for(int i=0; i<clusters.size(); ++i)
     {
@@ -32,17 +33,13 @@ vector<string> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
             max_match_index = i;
         }
 
-    //vector<string> cluster = clusters[max_match_index]; //模板序列
-    vector<string> cluster;
-    cluster.push_back("1");
-    cluster.push_back("2");
-    cluster.push_back("3");
+    vector<string> cluster = clusters[max_match_index]; //模板序列
 
     for(int i=0; i<cluster.size(); ++i)
         cout<<cluster[i]<<' ';
     cout<<endl;
 
-    //landmark_raw.insert(landmark_raw.begin(), landmark_raw.begin(), landmark_raw.end());
+    cluster.insert(cluster.begin(), cluster.begin(), cluster.end());
 
     for(int i=0; i<landmark_raw.size(); ++i)
         cout<<landmark_raw[i]<<' ';
@@ -51,7 +48,7 @@ vector<string> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
     int len1 = cluster.size();
     int len2 = landmark_raw.size();
     if(len2==0)
-        return landmark_raw;
+        return result_index;
     vector<vector<int>> dp(len1+1, vector<int>(len2+1,0));
     for(int i=1; i<=len1; ++i)
         for(int j=1; j<=len2; ++j)
@@ -60,13 +57,12 @@ vector<string> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
             else
                 dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
 
-    vector<string> result;
     int i=len1, j=len2;
     while(dp[i][j] != 0)
     {
-        if(dp[i][j] == dp[i-1][j-1]+1)
+        if(cluster[i-1] == landmark_raw[j-1])
         {
-            result.push_back(cluster[i-1]);
+            result_index.push_back(j-1);
             --i;--j;
         }
         else if(dp[i-1][j] > dp[i][j-1])
@@ -74,8 +70,9 @@ vector<string> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
         else
             --j;
     }
-    reverse(result.begin(), result.end());
-    return result;
+
+    reverse(result_index.begin(), result_index.end());
+    return result_index;
 }
 
 #endif //KEYFRAMESELECTION_LCS_H

@@ -26,7 +26,7 @@ FILE(GLOB_RECURSE sourcefiles "tracker/*.cpp")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-set(SOURCE_FILES main.cpp tools.h constant.h keyframe_init.h keyframe_selection_update.h run_rcnn_procedure.h Myserver.cpp Myserver.h classification.h landmark_identification.h LCS.h)
+set(SOURCE_FILES main.cpp tools.h constant.h keyframe_init.h keyframe_selection_update.h run_rcnn_procedure.h Myserver.cpp Myserver.h classification.h landmark_identification.h LCS.h filtering.h)
 
 add_executable(KeyframeSelection ${SOURCE_FILES}  ${sourcefiles} )
 

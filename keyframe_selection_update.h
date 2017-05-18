@@ -11,7 +11,7 @@
 #include "classification.h"
 #include "landmark_identification.h"
 
-void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier)
+void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier, char *landmark_classification_filename)
 {
     /*
      * 所涉及到的目录
@@ -52,8 +52,6 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
     sprintf(landmark_list_filename, "%s/landmark.txt", landmark_dir);
     FILE *landmark_list_file = fopen(landmark_list_filename, "w");
 
-    char landmark_classification_filename[256];
-    sprintf(landmark_classification_filename, "%s/landmark_classification.txt", landmark_dir);
     FILE *landmark_classification_file = fopen(landmark_classification_filename, "w");
 
     int landmark_count = 0;
