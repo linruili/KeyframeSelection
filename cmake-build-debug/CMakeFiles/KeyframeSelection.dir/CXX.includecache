@@ -76,6 +76,14 @@ vector
 opencv2/opencv.hpp
 -
 
+/home/HAVIL/KeyframeSelection/filtering.h
+iostream
+-
+vector
+-
+LCS.h
+/home/HAVIL/KeyframeSelection/LCS.h
+
 /home/HAVIL/KeyframeSelection/keyframe_init.h
 opencv2/core/core.hpp
 -
@@ -147,8 +155,8 @@ Myserver.h
 /home/HAVIL/KeyframeSelection/Myserver.h
 classification.h
 /home/HAVIL/KeyframeSelection/classification.h
-LCS.h
-/home/HAVIL/KeyframeSelection/LCS.h
+filtering.h
+/home/HAVIL/KeyframeSelection/filtering.h
 
 /home/HAVIL/KeyframeSelection/run_rcnn_procedure.h
 constant.h

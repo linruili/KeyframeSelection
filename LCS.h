@@ -39,7 +39,8 @@ vector<int> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
         cout<<cluster[i]<<' ';
     cout<<endl;
 
-    cluster.insert(cluster.begin(), cluster.begin(), cluster.end());
+    vector<string> tmp(cluster);
+    cluster.insert(cluster.begin(), tmp.begin(), tmp.end());
 
     for(int i=0; i<landmark_raw.size(); ++i)
         cout<<landmark_raw[i]<<' ';

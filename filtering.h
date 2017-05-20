@@ -14,10 +14,11 @@ using namespace std;
 typedef struct landmark_info
 {
     //对应landmark_classification.txt的每一行
+    //注：landmark_index序号从1开始
     int landmark_index;
     string landmark_name;
     float prob;
-};
+}landmark_info;
 
 vector<int> filter(char *landmark_classification_filename)
 {
@@ -40,7 +41,7 @@ vector<int> filter(char *landmark_classification_filename)
     int tmp1, tmp2;
     float tmp3;
     vector<landmark_info> landmark_infos;
-    while(fscanf(landmark_classification_file, "%d %d %f", tmp1, tmp2, tmp3)!=EOF)
+    while(fscanf(landmark_classification_file, "%d %d %f", &tmp1, &tmp2, &tmp3)!=EOF)
         if(tmp2 != -1)
         {
             landmark_info tmp;
@@ -50,30 +51,35 @@ vector<int> filter(char *landmark_classification_filename)
             landmark_infos.push_back(tmp);
         }
 
-
-    //注：landmark序号从1开始
-
-
-
-
-
-
-
-
-
-
+    //去掉名字相同的，取概率大的
+    for(int i=0; i<landmark_infos.size()-1; ++i)
+        for(int j=i+1; j<landmark_infos.size(); ++j)
+            if(landmark_infos[i].landmark_name == landmark_infos[j].landmark_name)
+            {
+                if(landmark_infos[j].prob <= landmark_infos[i].prob)
+                {
+                    landmark_infos.erase(landmark_infos.begin()+j);
+                    --j;
+                }
+                else
+                {
+                    landmark_infos.erase(landmark_infos.begin()+i);
+                    --i;
+                    break;
+                }
+            }
 
     vector<string> landmark_raw;
-    landmark_raw.push_back("2");
-    landmark_raw.push_back("4");
-    landmark_raw.push_back("50");
-    landmark_raw.push_back("1");
+    for(int i=0; i<landmark_infos.size(); ++i)
+        landmark_raw.push_back(landmark_infos[i].landmark_name);
 
     vector<int> result_index;
+    vector<int> final_index;
     result_index = LCS(clusters, landmark_raw);
     for(int i=0; i<result_index.size(); ++i)
-        cout<<result_index[i]<<" ";
+        final_index.push_back(landmark_infos[result_index[i]].landmark_index);
 
+    return final_index;
 }
 
 
