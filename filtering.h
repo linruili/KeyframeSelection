@@ -75,6 +75,8 @@ vector<int> filter(char *landmark_classification_filename)
 
     vector<int> result_index;
     vector<int> final_index;
+
+    //LCS¹ýÂË
     result_index = LCS(clusters, landmark_raw);
     for(int i=0; i<result_index.size(); ++i)
         final_index.push_back(landmark_infos[result_index[i]].landmark_index);

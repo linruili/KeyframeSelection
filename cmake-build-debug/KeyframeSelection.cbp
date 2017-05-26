@@ -51,6 +51,7 @@
 					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/home/HAVIL/KeyframeSelection/tracker"/>
+					<Add directory="/home/HAVIL/KeyframeSelection/./include"/>
 					<Add directory="/usr/include/c++/4.8"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
 					<Add directory="/usr/include/c++/4.8/backward"/>
@@ -80,6 +81,7 @@
 					<Add directory="/usr/local/include/opencv"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/home/HAVIL/KeyframeSelection/tracker"/>
+					<Add directory="/home/HAVIL/KeyframeSelection/./include"/>
 					<Add directory="/usr/include/c++/4.8"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
 					<Add directory="/usr/include/c++/4.8/backward"/>
@@ -114,6 +116,201 @@
 		<Unit filename="/home/HAVIL/KeyframeSelection/filtering.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/ibs_matrix.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA1DArrayGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA1DArrayGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA1DBinStrGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA1DBinStrGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA2DArrayGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA2DArrayGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA2DBinStrGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA2DBinStrGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA3DArrayGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA3DArrayGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA3DBinStrGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GA3DBinStrGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAAllele.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAAllele.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GABaseGA.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GABaseGA.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GABin2DecGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GABin2DecGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GABinStr.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GABinStr.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GADCrowdingGA.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GADCrowdingGA.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GADemeGA.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GADemeGA.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAIncGA.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAIncGA.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAList.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAList.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAListBASE.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAListBASE.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAListGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAListGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAParameter.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAParameter.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAPopulation.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAPopulation.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GARealGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GARealGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GASStateGA.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GASStateGA.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAScaling.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAScaling.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GASelector.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GASelector.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GASimpleGA.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GASimpleGA.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAStatistics.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAStatistics.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAStringGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GAStringGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GATree.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GATree.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GATreeBASE.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GATreeBASE.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GATreeGenome.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/GATreeGenome.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/gabincvt.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/gabincvt.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/gaerror.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/gaerror.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/garandom.C">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/garandom.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/keyframe_init.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
@@ -121,6 +318,9 @@
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/landmark_identification.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/locator_optimize.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/main.cpp">

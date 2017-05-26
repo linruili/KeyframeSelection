@@ -20,15 +20,18 @@ if (OpenCV_FOUND)
 endif ()
 include_directories(${CAFFE_INCLUDE} ${CAFFE_BUILD_INCLUDE} ${CUDA_INCLUDE} ${OpenCV_INCLUDE_DIRS})
 include_directories(tracker)
+include_directories("./include")
+aux_source_directory("./include/ga" GA_SRC)
+
 link_directories(${CAFFE_LIBRARY})
 
-FILE(GLOB_RECURSE sourcefiles "tracker/*.cpp")
+FILE(GLOB_RECURSE sourcefiles "tracker/*.cpp" )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
 
-set(SOURCE_FILES main.cpp tools.h constant.h keyframe_init.h keyframe_selection_update.h run_rcnn_procedure.h Myserver.cpp Myserver.h classification.h landmark_identification.h LCS.h filtering.h)
+set(SOURCE_FILES main.cpp tools.h constant.h keyframe_init.h keyframe_selection_update.h run_rcnn_procedure.h Myserver.cpp Myserver.h classification.h landmark_identification.h LCS.h filtering.h locator_optimize.h ibs_matrix.h)
 
-add_executable(KeyframeSelection ${SOURCE_FILES}  ${sourcefiles} )
+add_executable(KeyframeSelection ${SOURCE_FILES}  ${sourcefiles} ${GA_SRC})
 
 # add libs you need
 # set(OpenCV_LIBS opencv_core opencv_highgui opencv_nonfree)

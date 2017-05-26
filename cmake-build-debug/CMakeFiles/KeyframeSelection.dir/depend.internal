@@ -4,7 +4,474 @@
 CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o
  /home/HAVIL/KeyframeSelection/Myserver.cpp
  /home/HAVIL/KeyframeSelection/Myserver.h
+CMakeFiles/KeyframeSelection.dir/include/ga/GA1DArrayGenome.C.o
+ .././include/ga/GA1DArrayGenome.C
+ .././include/ga/GA1DArrayGenome.h
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/GAArray.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GA1DArrayGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GA1DBinStrGenome.C.o
+ .././include/ga/GA1DBinStrGenome.h
+ .././include/ga/GABinStr.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GA1DBinStrGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GA2DArrayGenome.C.o
+ .././include/ga/GA2DArrayGenome.C
+ .././include/ga/GA2DArrayGenome.h
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/GAArray.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GA2DArrayGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GA2DBinStrGenome.C.o
+ .././include/ga/GA2DBinStrGenome.h
+ .././include/ga/GABinStr.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GA2DBinStrGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GA3DArrayGenome.C.o
+ .././include/ga/GA3DArrayGenome.C
+ .././include/ga/GA3DArrayGenome.h
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/GAArray.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GA3DArrayGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GA3DBinStrGenome.C.o
+ .././include/ga/GA3DBinStrGenome.h
+ .././include/ga/GABinStr.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GA3DBinStrGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAAllele.C.o
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAAllele.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GABaseGA.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GABaseGA.C
+ /home/HAVIL/KeyframeSelection/include/ga/gaversion.h
+CMakeFiles/KeyframeSelection.dir/include/ga/GABin2DecGenome.C.o
+ .././include/ga/GA1DBinStrGenome.h
+ .././include/ga/GABin2DecGenome.h
+ .././include/ga/GABinStr.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/gabincvt.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GABin2DecGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GABinStr.C.o
+ .././include/ga/GABinStr.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GABinStr.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GADCrowdingGA.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAList.C
+ .././include/ga/GAList.h
+ .././include/ga/GAListBASE.h
+ .././include/ga/GANode.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GADCrowdingGA.C
+ /home/HAVIL/KeyframeSelection/include/ga/GADCrowdingGA.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAList.h
+ /home/HAVIL/KeyframeSelection/include/ga/garandom.h
+CMakeFiles/KeyframeSelection.dir/include/ga/GADemeGA.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GADemeGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GADemeGA.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAGenome.C.o
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAIncGA.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAIncGA.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAIncGA.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAList.C.o
+ .././include/ga/GAList.C
+ .././include/ga/GAList.h
+ .././include/ga/GAListBASE.h
+ .././include/ga/GANode.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAList.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAListBASE.C.o
+ .././include/ga/GAListBASE.h
+ .././include/ga/GANode.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAListBASE.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAListGenome.C.o
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAList.C
+ .././include/ga/GAList.h
+ .././include/ga/GAListBASE.h
+ .././include/ga/GAListGenome.C
+ .././include/ga/GAListGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/GANode.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAListGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAParameter.C.o
+ .././include/ga/GAParameter.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAParameter.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAPopulation.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAPopulation.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GARealGenome.C.o
+ .././include/ga/GA1DArrayGenome.C
+ .././include/ga/GA1DArrayGenome.h
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/GAArray.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/GARealGenome.C
+ .././include/ga/GARealGenome.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GARealGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GASStateGA.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GASStateGA.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GASStateGA.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAScaling.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAScaling.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GASelector.C.o
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GASelector.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GASimpleGA.C.o
+ .././include/ga/GABaseGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GASimpleGA.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GASimpleGA.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAStatistics.C.o
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAStatistics.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GAStringGenome.C.o
+ .././include/ga/GA1DArrayGenome.C
+ .././include/ga/GA1DArrayGenome.h
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/GAArray.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/GAStringGenome.C
+ .././include/ga/GAStringGenome.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAStringGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GATree.C.o
+ .././include/ga/GANode.h
+ .././include/ga/GATree.C
+ .././include/ga/GATree.h
+ .././include/ga/GATreeBASE.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GATree.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GATreeBASE.C.o
+ .././include/ga/GANode.h
+ .././include/ga/GATreeBASE.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GATreeBASE.C
+CMakeFiles/KeyframeSelection.dir/include/ga/GATreeGenome.C.o
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GANode.h
+ .././include/ga/GATree.C
+ .././include/ga/GATree.h
+ .././include/ga/GATreeBASE.h
+ .././include/ga/GATreeGenome.C
+ .././include/ga/GATreeGenome.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/GATreeGenome.C
+CMakeFiles/KeyframeSelection.dir/include/ga/gabincvt.C.o
+ .././include/ga/gabincvt.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/gabincvt.C
+CMakeFiles/KeyframeSelection.dir/include/ga/gaerror.C.o
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
+ /home/HAVIL/KeyframeSelection/include/ga/gaerror.C
+CMakeFiles/KeyframeSelection.dir/include/ga/garandom.C.o
+ .././include/ga/gaconfig.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ /home/HAVIL/KeyframeSelection/include/ga/garandom.C
 CMakeFiles/KeyframeSelection.dir/main.cpp.o
+ .././include/ga/GA1DArrayGenome.C
+ .././include/ga/GA1DArrayGenome.h
+ .././include/ga/GA1DBinStrGenome.h
+ .././include/ga/GA2DArrayGenome.C
+ .././include/ga/GA2DArrayGenome.h
+ .././include/ga/GA2DBinStrGenome.h
+ .././include/ga/GA3DArrayGenome.C
+ .././include/ga/GA3DArrayGenome.h
+ .././include/ga/GA3DBinStrGenome.h
+ .././include/ga/GAAllele.C
+ .././include/ga/GAAllele.h
+ .././include/ga/GAArray.h
+ .././include/ga/GABaseGA.h
+ .././include/ga/GABin2DecGenome.h
+ .././include/ga/GABinStr.h
+ .././include/ga/GADCrowdingGA.h
+ .././include/ga/GADemeGA.h
+ .././include/ga/GAEvalData.h
+ .././include/ga/GAGenome.h
+ .././include/ga/GAIncGA.h
+ .././include/ga/GAList.C
+ .././include/ga/GAList.h
+ .././include/ga/GAListBASE.h
+ .././include/ga/GAListGenome.C
+ .././include/ga/GAListGenome.h
+ .././include/ga/GAMask.h
+ .././include/ga/GANode.h
+ .././include/ga/GAParameter.h
+ .././include/ga/GAPopulation.h
+ .././include/ga/GASStateGA.h
+ .././include/ga/GAScaling.h
+ .././include/ga/GASelector.h
+ .././include/ga/GASimpleGA.h
+ .././include/ga/GAStatistics.h
+ .././include/ga/GATree.C
+ .././include/ga/GATree.h
+ .././include/ga/GATreeBASE.h
+ .././include/ga/GATreeGenome.C
+ .././include/ga/GATreeGenome.h
+ .././include/ga/gabincvt.h
+ .././include/ga/gaconfig.h
+ .././include/ga/gaerror.h
+ .././include/ga/gaid.h
+ .././include/ga/garandom.h
+ .././include/ga/gatypes.h
+ .././include/ga/std_stream.h
  ../tracker/kcftracker.hpp
  ../tracker/recttools.hpp
  ../tracker/tracker.h
@@ -13,9 +480,18 @@ CMakeFiles/KeyframeSelection.dir/main.cpp.o
  /home/HAVIL/KeyframeSelection/classification.h
  /home/HAVIL/KeyframeSelection/constant.h
  /home/HAVIL/KeyframeSelection/filtering.h
+ /home/HAVIL/KeyframeSelection/ibs_matrix.h
+ /home/HAVIL/KeyframeSelection/include/ga/GABin2DecGenome.h
+ /home/HAVIL/KeyframeSelection/include/ga/GAGenome.h
+ /home/HAVIL/KeyframeSelection/include/ga/GASimpleGA.h
+ /home/HAVIL/KeyframeSelection/include/ga/ga.h
+ /home/HAVIL/KeyframeSelection/include/ga/garandom.h
+ /home/HAVIL/KeyframeSelection/include/ga/gaversion.h
+ /home/HAVIL/KeyframeSelection/include/ga/std_stream.h
  /home/HAVIL/KeyframeSelection/keyframe_init.h
  /home/HAVIL/KeyframeSelection/keyframe_selection_update.h
  /home/HAVIL/KeyframeSelection/landmark_identification.h
+ /home/HAVIL/KeyframeSelection/locator_optimize.h
  /home/HAVIL/KeyframeSelection/main.cpp
  /home/HAVIL/KeyframeSelection/run_rcnn_procedure.h
  /home/HAVIL/KeyframeSelection/tools.h
