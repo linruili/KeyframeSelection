@@ -80,8 +80,10 @@ void keyframe_init(char *filename)
         frame_names.push_back(name);
     }
     ftime(&t2);
+    long t = (t2.time-t1.time)*1000+t2.millitm-t1.millitm;
     cout<<"frame_count = "<<frame_count<<endl;
-    cout<<"runtime = "<<(t2.time-t1.time)*1000+t2.millitm-t1.millitm<<" ms"<<endl;
+    cout<<"**runtime for loading = "<<t<<" ms"<<endl;
+    cout<<"load time per frame = "<<t/frame_count<<endl;
 }
 
 #endif //KEYFRAMESELECTION_KEYFRAME_INIT_H

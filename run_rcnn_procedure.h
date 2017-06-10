@@ -13,6 +13,8 @@
 #include <sys/wait.h>
 #include <sys/timeb.h>
 
+long rcnn_total_time;
+
 void readFromFile(char *keyframe_prob_filename, std::vector<Landmark> &result)
 {
     FILE *keyframe_prob_file = fopen(keyframe_prob_filename, "r");
@@ -66,7 +68,9 @@ vector<Landmark> run_rcnn_procedure(char *testcase_dir, int frame_index, Myserve
         char keyframe_prob_filename[1024];
         myserver.rec_mes(keyframe_prob_filename);
         ftime(&t2);
-        cout<<"RCNN runtime = "<<(t2.time-t1.time)*1000+t2.millitm-t1.millitm<<" ms"<<endl;
+        long t = (t2.time-t1.time)*1000+t2.millitm-t1.millitm;
+        rcnn_total_time += t;
+        cout<<"**RCNN runtime = "<<t<<" ms"<<endl;
 
         readFromFile(keyframe_prob_filename, result);
 

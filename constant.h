@@ -14,7 +14,7 @@ public:
     const static int tracker_threshold = 50;
     const static int tracker_ignore_threshold = 30;
     const static int tracker_ignore_start_threshold = 50;
-    const static int tracker_jump_length = 30;
+    const static int tracker_jump_length = 100;
 
     const static int rcnn_method = 2;
 };

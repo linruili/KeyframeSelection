@@ -37,47 +37,11 @@
 
 using namespace std;
 
-
-typedef std::vector<double> vector_d;
-
-typedef struct point
-{
-    double x;
-    double y;
-
-    point(double _x = 0, double _y = 0)
-    {
-        x = _x;
-        y = _y;
-    }
-} point_t;
-
-typedef struct model
-{
-    point_t from;
-    point_t to;
-    model(point_t _from, point_t _to):from(_from),to(_to){};
-} model_t;
-
-typedef struct homo_point
-{
-    double x;
-    double y;
-    double z;
-
-    homo_point(double _x, double _y, double _z)
-    {
-        x = _x;
-        y = _y;
-        z = _z;
-    }
-} homo_point_t;
-
 // global variables
 const double north[] = {1, 0};
 int landmark_count;
 vector<point_t> landmark_location;
-vector<model_t> map_model;
+vector<model_t> map_model;//Ç½µÄÏß¶Î
 vector_d compass;
 double lambda_weight;
 
@@ -141,10 +105,15 @@ vector_d genome2vector(GAGenome &);
 vector_d calculate_location_result(const vector_d &delta_theta);
 
 vector_d
-ga_main(const vector_d &match_result_x, const vector_d &match_result_y, const vector_d &compass_reading,
-        const double lambda = 5, const int pop_size = 30, const int generation = 600, const double cross_ratio = 0.9,
-        const double mutation_ratio = 0.08, const int ga_min_value = -10, const int ga_max_value = 10)
+ga_main(vector<landmark_info> &landmark_sequence,
+        const double lambda = 0.05, const int pop_size = 50, const int generation = 500, const double cross_ratio = 0.9,
+        const double mutation_ratio = 0.1, const int ga_min_value = -10, const int ga_max_value = 10)
 {
+    cout<<"landmark_sequence : ";
+    for(int i=0; i<landmark_sequence.size(); ++i)
+        cout<<landmark_sequence[i].landmark_ID<<" ";
+    cout<<endl;
+
     //load map_model
     FILE *modelFile = fopen("./mapmodel_gogo.txt", "r");
     double from_x, from_y, to_x, to_y;
@@ -162,33 +131,31 @@ ga_main(const vector_d &match_result_x, const vector_d &match_result_y, const ve
            lambda, pop_size, generation, cross_ratio, mutation_ratio, ga_min_value, ga_max_value);
 
     printf("match_result_x: {");
-    for (int i = 0; i < match_result_x.size() - 1; i++)
-        printf("%f,", match_result_x[i]);
-    printf("%f}\n", match_result_x[match_result_x.size() - 1]);
+    for (int i = 0; i < landmark_sequence.size() - 1; i++)
+        printf("%f,", landmark_sequence[i].x);
+    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].x);
 
     printf("match_result_y: {");
-    for (int i = 0; i < match_result_y.size() - 1; i++)
-        printf("%f,", match_result_y[i]);
-    printf("%f}\n", match_result_y[match_result_y.size() - 1]);
+    for (int i = 0; i < landmark_sequence.size() - 1; i++)
+        printf("%f,", landmark_sequence[i].y);
+    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].y);
 
     printf("compass_reading: {");
-    for (int i = 0; i < compass_reading.size() - 1; i++)
-        printf("%f,", compass_reading[i]);
-    printf("%f}\n", compass_reading[compass_reading.size() - 1]);
+    for (int i = 0; i < landmark_sequence.size() - 1; i++)
+        printf("%f,", landmark_sequence[i].compass);
+    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].compass);
 
     // begin ga config
     landmark_location.clear();
     compass.clear();
 
-    assert(match_result_x.size() == match_result_y.size());
-    assert(match_result_x.size() == compass_reading.size());
-    landmark_count = match_result_x.size();
+    landmark_count = landmark_sequence.size();
     lambda_weight = lambda;
     for (int i = 0; i < landmark_count; i++)
     {
-        point_t p(match_result_x[i], match_result_y[i]);
+        point_t p(landmark_sequence[i].x, landmark_sequence[i].y);
         landmark_location.push_back(p);
-        compass.push_back(compass_reading[i]);
+        compass.push_back(landmark_sequence[i].compass);
     }
 
     // See if we've been given a seed to use (for testing purposes).  When you

@@ -10,6 +10,19 @@
 #include "Myserver.h"
 #include "classification.h"
 #include "landmark_identification.h"
+#include <cmath>
+#include <cstdlib>
+#include <sys/timeb.h>
+
+int findKeyframe(int &minSpace,int minIndex, int curIndex, cv::Rect rect, int frame_width)
+{
+    if( abs((rect.x+(rect.x+rect.width))/2 - frame_width/2) < minSpace)
+    {
+        minSpace = abs((rect.x+(rect.x+rect.width))/2 - frame_width/2);
+        return curIndex;
+    }
+    return minIndex;
+}
 
 void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier, char *landmark_classification_filename)
 {
@@ -21,10 +34,14 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
      *
      * 文件
      * landmark_list_file = landmark_dir + /landmark.txt
-     * andmark_classification_filename = landmark_dir + /landmark_classification.txt
+     * andmark_classification_filename = landmark_dir + /landmark_classification.txt  [landmarkcount, landmarkID, probability, keyframe]
      * landmark_sub_list_filename = landmark_sub_dir + /landmark_detail.txt
      * landmark_region_filename = landmark_sub_dir + /region_index.jpg
      * */
+    timeb t1,t2,t3,t4,t5,t6;
+    long identify_total_time = 0;
+    ftime(&t1);
+
     int pre_frame_index = 1;
     int max_frame_index = 1;
     int cur_frame_index = 1;
@@ -64,6 +81,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
     while (pre_frame_index < total_frame)
     {
+        ftime(&t2);
+
         vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index,myserver);
         sort(regions.begin(), regions.end(), landmark_comp);
 
@@ -78,6 +97,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
         while (region_index < regions.size())
         {
+            ftime(&t3);
             pre_frame = load_frame(testcase_dir_name, pre_frame_index);
             //过滤掉region在图片下半部分的情况
             if ((regions[region_index].rect.x < constant.tracker_ignore_start_threshold
@@ -109,6 +129,10 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             sprintf(landmark_sub_list_filename, "%s/landmark_detail.txt", landmark_sub_dir);
             FILE *landmark_sub_file = fopen(landmark_sub_list_filename, "w");
 
+            int minSpace = INT_MAX;//每帧和正中的距离
+            int minIndex = findKeyframe(minSpace, 0, pre_frame_index, pre_rect, frame_width);//keyframe_index
+
+
             // record landmark in pre_frame index
             fprintf(landmark_sub_file, "%s.jpg %s %d %d %d %d\n",
                     get_name_from_frame_index(cur_frame_index).c_str(),
@@ -137,6 +161,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
                 pre_rect = update_rect;
                 pre_frame = next_frame;
+
+                minIndex = findKeyframe(minSpace, minIndex, cur_frame_index, pre_rect, frame_width);
 
                 if (update_rect.x > constant.tracker_ignore_threshold
                     && update_rect.x + update_rect.width
@@ -180,6 +206,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
                 pre_rect = update_rect;
                 pre_frame = next_frame;
 
+                minIndex = findKeyframe(minSpace, minIndex, cur_frame_index, pre_rect, frame_width);
+
                 if (update_rect.x > constant.tracker_ignore_threshold
                     && update_rect.x + update_rect.width
                        < frame_width - constant.tracker_ignore_threshold
@@ -217,12 +245,16 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
             region_index++;
 
-            //start landmark indentify
+            ftime(&t4);
+            cout<<"**time for KCF = "<<(t4.time-t3.time)*1000 + t4.millitm-t3.millitm<<endl;
+            cout<<"**time for KCF per frame = "<<((t4.time-t3.time)*1000 + t4.millitm-t3.millitm) / (frame_index_end-frame_index_begin)<<endl;
+
+            //start landmark identify
 
             cout<<"frame_index_beigin "<<frame_index_begin<<" "<<"frame_index_end "<<frame_index_end<<endl;
             int load_index;
             vector<cv::Mat> imgs;
-            char predictFile[1024];
+            char predictFile[256];
             for(int i=1; i<=10; ++i)
             {
                 load_index = (frame_index_end - frame_index_begin)/10*i+frame_index_begin;
@@ -233,11 +265,18 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             }
             Prediction predict_landmark = landmark_identify(imgs, classifier);
 
+            ftime(&t5);
+            cout<<"**time for identifying = "<<(t5.time-t4.time)*1000 + t5.millitm-t4.millitm<<endl;
+            identify_total_time += (t5.time-t4.time)*1000 + t5.millitm-t4.millitm;
+
             // record landmark_classification
             printf("------predict for landmark %d -- %s -- %f\n", landmark_count, predict_landmark.first.c_str(), predict_landmark.second);
 
-            fprintf(landmark_classification_file, "%d %s %f\n",
-                    landmark_count, predict_landmark.first.c_str(), predict_landmark.second);
+            int predict_landmark_ID = atoi(predict_landmark.first.c_str())+1;
+            if(predict_landmark_ID==0)
+                predict_landmark_ID = -1;
+            fprintf(landmark_classification_file, "%d %d %f %d\n",
+                    landmark_count, predict_landmark_ID, predict_landmark.second, minIndex);
 
         }
 
@@ -248,12 +287,17 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
     }
 
+    ftime(&t6);
+    cout<<"**time for keyframe_selection_update = "<<(t6.time-t1.time)*1000 + t6.millitm-t1.millitm<<endl;
+    cout<<"final RCNN counter = "<<rcnn_counter<<endl;
+    cout<<"**identify_total_time = "<<identify_total_time<<endl;
 
     fprintf(landmark_list_file, "RCNN counter: %d\n", rcnn_counter);
     rcnn_counter = 0;
     frame_names.clear();
     frames.clear();
     fclose(landmark_list_file);
+    fclose(landmark_classification_file);
     return;
 }
 

@@ -20,10 +20,98 @@
 #include <sys/stat.h>
 #include <regex>
 #include "constant.h"
+#include <sys/timeb.h>
 
 
 using namespace std;
 
+typedef std::vector<double> vector_d;
+
+typedef struct point
+{
+    double x;
+    double y;
+
+    point(double _x = 0, double _y = 0)
+    {
+        x = _x;
+        y = _y;
+    }
+} point_t;
+
+typedef struct model
+{
+    point_t from;
+    point_t to;
+    model(point_t _from, point_t _to):from(_from),to(_to){};
+} model_t;
+
+typedef struct homo_point
+{
+    double x;
+    double y;
+    double z;
+
+    homo_point(double _x, double _y, double _z)
+    {
+        x = _x;
+        y = _y;
+        z = _z;
+    }
+} homo_point_t;
+
+typedef struct landmark_info
+{
+    //对应landmark_classification.txt的每一行
+    //注：landmark_index序号从1开始
+    int landmark_index;//landmark_classification.txt的第几行
+    int landmark_ID;//1-55的那个序号
+    int keyframe;
+    float prob;
+    double x=0, y=0, compass=0;
+}landmark_info;
+
+// global variables
+vector<point_t> landmark_correct;
+
+void load_landmark_x_y_compass(vector<landmark_info> &landmark_sequence, char* testcase_path)
+{
+    timeb t1,t2;
+    ftime(&t1);
+    char compass_info_fileName[256];
+    sprintf(compass_info_fileName, "%s/compass_info.txt", testcase_path);
+    FILE *file = fopen(compass_info_fileName, "r");
+    vector<double> compass;
+    int tmp1;
+    double tmp2;
+    while (fscanf(file, "%d %lf", &tmp1, &tmp2)!=EOF)
+        compass.push_back(tmp2);
+    //把landmark_sequence的x,y,compass读进来
+    for(int i=0; i<landmark_sequence.size(); ++i)
+    {
+        int landmark_ID = landmark_sequence[i].landmark_ID;
+        landmark_sequence[i].x = landmark_correct[landmark_ID-1].x;
+        landmark_sequence[i].y = landmark_correct[landmark_ID-1].y;
+        landmark_sequence[i].compass = compass[landmark_sequence[i].keyframe-1];
+    }
+    fclose(file);
+    ftime(&t2);
+    long t = (t2.time-t1.time)*1000 + t2.millitm-t1.millitm;
+    cout<<"**time for load_landmark_x_y_compass = "<<t<<endl;
+}
+
+void load_landmark_correct()
+{
+    char fileName[256] = "./location_correct.txt";
+    double x,y;
+    FILE *file = fopen(fileName, "r");
+    while(fscanf(file, "%lf%lf", &x, &y)!=EOF)
+    {
+        point_t point(x,y);
+        landmark_correct.push_back(point);
+    }
+    fclose(file);
+}
 
 
 void split(const string &src, const string &separator, vector<string> &dest)

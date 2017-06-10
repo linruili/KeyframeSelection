@@ -12,9 +12,10 @@
 
 using namespace std;
 
-vector<int> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
+vector<int> LCS(vector<string> cluster, vector<string> landmark_raw, int flag);
+
+vector<int> find_cluster_and_LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
 {
-    vector<int> result_index;
     int match_num[clusters.size()];//landmark_raw和每个cluster匹配到的个数
     for(int i=0; i<clusters.size(); ++i)
     {
@@ -35,17 +36,32 @@ vector<int> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
 
     vector<string> cluster = clusters[max_match_index]; //模板序列
 
+    cout<<"cluster sequence ";
     for(int i=0; i<cluster.size(); ++i)
         cout<<cluster[i]<<' ';
     cout<<endl;
 
-    vector<string> tmp(cluster);
-    cluster.insert(cluster.begin(), tmp.begin(), tmp.end());
-
+    cout<<"landmark_raw sequence ";
     for(int i=0; i<landmark_raw.size(); ++i)
         cout<<landmark_raw[i]<<' ';
     cout<<endl;
 
+    vector<int> result_index1 = LCS(cluster, landmark_raw, 1);
+    vector<int> result_index0 = LCS(cluster, landmark_raw, 0);
+    if(result_index0.size() > result_index1.size())
+        return result_index0;
+    else
+        return result_index1;
+}
+
+vector<int> LCS(vector<string> cluster, vector<string> landmark_raw, int flag)
+{
+    //flag=1 正向   flag 0 反向
+    if(flag == 0)
+        reverse(cluster.begin(), cluster.end());
+    vector<int> result_index;
+    vector<string> tmp(cluster);
+    cluster.insert(cluster.begin(), tmp.begin(), tmp.end());
     int len1 = cluster.size();
     int len2 = landmark_raw.size();
     if(len2==0)
@@ -74,6 +90,7 @@ vector<int> LCS(vector<vector<string>> clusters, vector<string> landmark_raw)
 
     reverse(result_index.begin(), result_index.end());
     return result_index;
+
 }
 
 #endif //KEYFRAMESELECTION_LCS_H
