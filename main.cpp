@@ -24,6 +24,9 @@ int main(int argc, char** argv)
 
     Myserver myserver;
     myserver.start();
+    /*
+     * 记得修改constant.h里的jump_length和sampling-----------------------------------------------
+     */
 
     load_landmark_correct();
     char root_path[256] = "/home/TestSet/0209_gogo_dataset";
@@ -77,7 +80,7 @@ int main(int argc, char** argv)
             fclose(ground_truth_file);
             cout<<"ground truth = "<<x<<" , "<<y<<endl;
             double error = pdist(point_t(x,y), point_t(result[0], result[1]));
-            if(error<100)
+            if(error<200)
                 total_error += error;
             else
                 --error_num;
@@ -91,7 +94,7 @@ int main(int argc, char** argv)
         //write result to file
         cout<<"mean error = "<<total_error/error_num<<" = "<<total_error/error_num/18<<"m"<<endl;
         cout<<"mean time_rcnn = "<<rcnn_total_time/testcase_num[i]<<endl;
-        cout<<"mean time_indentify = "<<total_time_indentify/testcase_num[i]<<endl;
+        cout<<"mean time_from_rcnn_to_GoogLeNet = "<<total_time_indentify/testcase_num[i]<<endl;
         cout<<"mean time_locate = "<<total_time_locate/testcase_num[i]<<endl;
         char result_filename[256];
         sprintf(result_filename, "%s/result.txt", part_path);

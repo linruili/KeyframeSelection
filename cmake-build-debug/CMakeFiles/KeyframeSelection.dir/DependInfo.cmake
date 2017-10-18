@@ -53,7 +53,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/download/caffe-master/include"
   "/home/download/caffe-master/build/src"
-  "/usr/local/cuda-7.5/targets/x86_64-linux/include"
+  "/usr/local/cuda-7.5/include"
   "/usr/local/include/opencv"
   "/usr/local/include"
   "../tracker"

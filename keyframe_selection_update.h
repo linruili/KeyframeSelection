@@ -84,6 +84,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
         ftime(&t2);
 
         vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index,myserver);
+        cout<<"rcnn_frame_index = "<<pre_frame_index<<endl;
+        cout<<"rcnn_regions.size() = "<<regions.size()<<endl;
         sort(regions.begin(), regions.end(), landmark_comp);
 
         cv::Mat pre_frame = load_frame(testcase_dir_name, pre_frame_index);
@@ -99,13 +101,15 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
         {
             ftime(&t3);
             pre_frame = load_frame(testcase_dir_name, pre_frame_index);
-            //过滤掉region在图片下半部分的情况
-            if ((regions[region_index].rect.x < constant.tracker_ignore_start_threshold
+            //过滤掉region在图片下半部分的情况或region在图片最左或最右的
+            if (regions[region_index].rect.x < constant.tracker_ignore_start_threshold
                  || regions[region_index].rect.y + regions[region_index].rect.height / 2
                     >= frame_height / 2
                  || regions[region_index].rect.x + regions[region_index].rect.width
-                    > frame_width - constant.tracker_ignore_start_threshold))
+                    > frame_width - constant.tracker_ignore_start_threshold)
             {
+                cout<<"rcnn region filtered -_-    rcnn_counter="<<rcnn_counter
+                    <<"  region_index="<<region_index<<endl;
                 region_index++;
                 continue;
             }
@@ -247,7 +251,8 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
             ftime(&t4);
             cout<<"**time for KCF = "<<(t4.time-t3.time)*1000 + t4.millitm-t3.millitm<<endl;
-            cout<<"**time for KCF per frame = "<<((t4.time-t3.time)*1000 + t4.millitm-t3.millitm) / (frame_index_end-frame_index_begin)<<endl;
+            if(frame_index_end-frame_index_begin != 0)
+                cout<<"**time for KCF per frame = "<<((t4.time-t3.time)*1000 + t4.millitm-t3.millitm) / (frame_index_end-frame_index_begin)<<endl;
 
             //start landmark identify
 

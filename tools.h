@@ -92,7 +92,7 @@ void load_landmark_x_y_compass(vector<landmark_info> &landmark_sequence, char* t
         int landmark_ID = landmark_sequence[i].landmark_ID;
         landmark_sequence[i].x = landmark_correct[landmark_ID-1].x;
         landmark_sequence[i].y = landmark_correct[landmark_ID-1].y;
-        landmark_sequence[i].compass = compass[landmark_sequence[i].keyframe-1];
+        landmark_sequence[i].compass = compass[(landmark_sequence[i].keyframe-1)*constant.sampling];
     }
     fclose(file);
     ftime(&t2);

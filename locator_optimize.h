@@ -130,6 +130,7 @@ ga_main(vector<landmark_info> &landmark_sequence,
     printf("Config: lambda=%f, pop_size=%d, generation=%d, \ncross_ratio=%f, mutation_ratio=%f, min_value=%d, max_value=%d\n",
            lambda, pop_size, generation, cross_ratio, mutation_ratio, ga_min_value, ga_max_value);
 
+    cout<<"landmark_sequence.size() = "<<landmark_sequence.size()<<endl;
     printf("match_result_x: {");
     for (int i = 0; i < landmark_sequence.size() - 1; i++)
         printf("%f,", landmark_sequence[i].x);

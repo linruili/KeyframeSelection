@@ -14,6 +14,7 @@
 #include <sys/timeb.h>
 
 long rcnn_total_time;
+Record final_result;
 
 void readFromFile(char *keyframe_prob_filename, std::vector<Landmark> &result)
 {

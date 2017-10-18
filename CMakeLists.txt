@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(CAFFE_INCLUDE /home/download/caffe-master/include/)
 set(CAFFE_BUILD_INCLUDE /home/download/caffe-master/build/src/)
-set(CUDA_INCLUDE /usr/local/cuda-7.5/targets/x86_64-linux/include/)
+set(CUDA_INCLUDE /usr/local/cuda-7.5/include/)
 set(CAFFE_LIBRARY /home/download/caffe-master/build/lib/)
 
 if (WIN32)
