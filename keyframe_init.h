@@ -29,7 +29,7 @@ int rcnn_counter = 0;
 vector<cv::Mat> frames;
 vector<string> frame_names;
 
-void keyframe_init(char *filename)
+void keyframe_init(char *filename, int phone_index)
 {
     //读入图片，放入frames, name放入frame_names
     rcnn_counter = 0;
@@ -81,6 +81,8 @@ void keyframe_init(char *filename)
     }
     ftime(&t2);
     long t = (t2.time-t1.time)*1000+t2.millitm-t1.millitm;
+    final_result.totalFrameNum[phone_index] += frame_count;
+    final_result.load_time[phone_index] += t;
     cout<<"frame_count = "<<frame_count<<endl;
     cout<<"**runtime for loading = "<<t<<" ms"<<endl;
     cout<<"load time per frame = "<<t/frame_count<<endl;

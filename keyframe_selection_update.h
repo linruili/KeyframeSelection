@@ -24,7 +24,8 @@ int findKeyframe(int &minSpace,int minIndex, int curIndex, cv::Rect rect, int fr
     return minIndex;
 }
 
-void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier, char *landmark_classification_filename)
+void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier,
+                               char *landmark_classification_filename, int phone_index)
 {
     /*
      * 所涉及到的目录
@@ -96,6 +97,9 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
         int region_index = 0;
         bool is_process = false;
+
+        ftime(&t3);
+        final_result.rcnn_total_time[phone_index] += (t3.time-t2.time)*1000 + t3.millitm-t2.millitm;
 
         while (region_index < regions.size())
         {
@@ -250,9 +254,12 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             region_index++;
 
             ftime(&t4);
-            cout<<"**time for KCF = "<<(t4.time-t3.time)*1000 + t4.millitm-t3.millitm<<endl;
+            long t;
+            t = (t4.time-t3.time)*1000 + t4.millitm-t3.millitm;
+            cout<<"**time for KCF = "<<t<<endl;
+            final_result.kcf_total_time[phone_index] += t;
             if(frame_index_end-frame_index_begin != 0)
-                cout<<"**time for KCF per frame = "<<((t4.time-t3.time)*1000 + t4.millitm-t3.millitm) / (frame_index_end-frame_index_begin)<<endl;
+                cout<<"**time for KCF per frame = "<<t / (frame_index_end-frame_index_begin)<<endl;
 
             //start landmark identify
 
@@ -271,11 +278,13 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             Prediction predict_landmark = landmark_identify(imgs, classifier);
 
             ftime(&t5);
-            cout<<"**time for identifying = "<<(t5.time-t4.time)*1000 + t5.millitm-t4.millitm<<endl;
-            identify_total_time += (t5.time-t4.time)*1000 + t5.millitm-t4.millitm;
+            t = (t5.time-t4.time)*1000 + t5.millitm-t4.millitm;
+            final_result.GoogLeNet_total_time[phone_index] += t;
+            cout<<"**time for identifying = "<<t<<endl;
+            identify_total_time += t;
 
             // record landmark_classification
-            printf("------predict for landmark %d -- %s -- %f\n", landmark_count, predict_landmark.first.c_str(), predict_landmark.second);
+            printf("------predict for landmark %d -- %d -- %f\n", landmark_count, atoi(predict_landmark.first.c_str())+1, predict_landmark.second);
 
             int predict_landmark_ID = atoi(predict_landmark.first.c_str())+1;
             if(predict_landmark_ID==0)
@@ -293,6 +302,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
     }
 
     ftime(&t6);
+    final_result.rcnn_total_num[phone_index] += rcnn_counter;
     cout<<"**time for keyframe_selection_update = "<<(t6.time-t1.time)*1000 + t6.millitm-t1.millitm<<endl;
     cout<<"final RCNN counter = "<<rcnn_counter<<endl;
     cout<<"**identify_total_time = "<<identify_total_time<<endl;
