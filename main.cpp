@@ -29,12 +29,11 @@ int main(int argc, char** argv)
      * 记得修改constant.h里的jump_length和sampling-----------------------------------------------
      */
 
-
     load_landmark_correct();
     char root_path[256] = "/home/TestSet/0209_gogo_dataset";
     vector<string> phones = {"GoPro-vedio", "Mate7-vedio", "Mi4-video"};
 
-    for (int i = 0; i < 1; ++i)  //-----------------i<phones.size()---------------------------
+    for (int i = 0; i < i<phones.size(); ++i)
     {
         char part_path[256];
         sprintf(part_path, "%s/%s/part", root_path, phones[i].c_str());
@@ -55,6 +54,7 @@ int main(int argc, char** argv)
 
             if (landmark_sequence.size() != 0)
             {
+                /*
                 vector< vector_d > tmp(ROUND,vector<double>());//-----------------------------------
                 for(int k=0; k<ROUND; ++k)
                     tmp[k] = ga_main(landmark_sequence);
@@ -63,7 +63,9 @@ int main(int argc, char** argv)
                     for(int w=0; w<result.size(); ++w)
                         result[w] += tmp[k][w];
                 for(int w=0; w<result.size(); ++w)
-                    result[w] /= ROUND;
+                    result[w] /= ROUND;*/
+
+                result = simple_weighted(landmark_sequence);
             }
             else
                 result = vector_d(2, 0.0);
@@ -89,13 +91,14 @@ int main(int argc, char** argv)
             cout << "ground truth = " << x << " , " << y << endl;
             double error = pdist(point_t(x, y), point_t(result[0], result[1])) / 18;
             final_result.errors[i].push_back(error);
-            if (error < 10) {
+            if (error < 10)
+            {
                 final_result.not_nan_error_num[i]++;
                 final_result.total_error[i] += error;
             } else
                 cout << "error>10!" << endl;
             cout << "error = " << error << endl;
-            cout << "------------------------------------------------------------------------------------------------------------------"
+            cout << "----------------------------------------------------------------------------------"
                     << endl;
                     
             printf("Processing testcase Done***** \n%s\n", testcase_path);
@@ -109,7 +112,8 @@ int main(int argc, char** argv)
             fprintf(result_file, "%ld\n", final_result.errors[i][j]);
         fclose(result_file);
     }
-    for (int i = 0; i < 1; ++i) {//-----------------i<phones.size()------
+    for (int i = 0; i < i<phones.size(); ++i)
+    {
         cout << "result of " << phones[i] << endl;
         cout << "error<10m number = " << final_result.not_nan_error_num[i] << endl;
         cout << "mean error = " << final_result.total_error[i] / final_result.not_nan_error_num[i] << endl;
@@ -126,8 +130,6 @@ int main(int argc, char** argv)
              << endl;
         cout << endl;
     }
-    
-
 
     return 0;
 }

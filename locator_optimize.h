@@ -45,119 +45,40 @@ vector<model_t> map_model;//墙的线段
 vector_d compass;
 double lambda_weight;
 
+double dot_product(const point_t &veca, const point_t &vecb);
+double norm(const point_t &vec);
+point_t cross(const homo_point_t &from, const homo_point_t &to);
+double pdist(const point_t &veca, const point_t &vecb);
+bool line_intersection_side(const point_t A, const point_t B, const point_t C, const point_t D);
+bool is_can_see(const point_t user_pos, const point_t store_pos);
+void print_landmark_sequence_info(vector<landmark_info> &landmark_sequence);
+void landmark_init(vector<landmark_info> &landmark_sequence);
+vector_d calculate_location_result(const vector_d &delta_theta);
 
-double dot_product(const point_t &veca, const point_t &vecb)
-{
-    return veca.x * vecb.x + veca.y * vecb.y;
-}
-
-double norm(const point_t &vec)
-{
-    return sqrt(vec.x * vec.x + vec.y * vec.y);
-}
-
-point_t cross(const homo_point_t &from, const homo_point_t &to)
-{
-    double x = from.y * to.z - from.z * to.y;
-    double y = from.z * to.x - from.x * to.z;
-    double z = from.x * to.y - from.y * to.x;
-
-    return point_t(x / z, y / z);
-}
-
-double pdist(const point_t &veca, const point_t &vecb)
-{
-    return sqrt((veca.x - vecb.x) * (veca.x - vecb.x) +
-                (veca.y - vecb.y) * (veca.y - vecb.y));
-}
-
-bool line_intersection_side(const point_t A, const point_t B, const point_t C, const point_t D)
-{
-    double fC = (C.y - A.y) * (A.x - B.x) - (C.x - A.x) * (A.y - B.y);
-    double fD = (D.y - A.y) * (A.x - B.x) - (D.x - A.x) * (A.y - B.y);
-
-    return fC * fD <= 0;
-}
-
-bool is_can_see(const point_t user_pos, const point_t store_pos)
-{
-    double dist = pdist(user_pos, store_pos);
-    if (dist > LINE_OF_SIGHT_MAX || dist < LINE_OF_SIGHT_MIN || isnan(dist))
-        return false;
-
-    for (int i = 0; i < map_model.size(); i++)
-        if (line_intersection_side(user_pos, store_pos, map_model[i].from, map_model[i].to)
-            && line_intersection_side(map_model[i].from, map_model[i].to, user_pos, store_pos))
-        {
-            return false;
-        }
-    return true;
-}
 
 /*****************************
- ** begin genetic algorithm **
- *****************************/
+ ** begin genetic algorithm **/
 
 float objective(GAGenome &);
-
 vector_d genome2vector(GAGenome &);
 
-vector_d calculate_location_result(const vector_d &delta_theta);
 
 vector_d
 ga_main(vector<landmark_info> &landmark_sequence,
         const double lambda = 0.05, const int pop_size = 50, const int generation = 500, const double cross_ratio = 0.9,
         const double mutation_ratio = 0.1, const int ga_min_value = -10, const int ga_max_value = 10)
 {
-    cout<<"landmark_sequence : ";
-    for(int i=0; i<landmark_sequence.size(); ++i)
-        cout<<landmark_sequence[i].landmark_ID<<" ";
-    cout<<endl;
-
-    //load map_model
-    FILE *modelFile = fopen("./mapmodel_gogo.txt", "r");
-    double from_x, from_y, to_x, to_y;
-    while(fscanf(modelFile, "%lf %lf %lf %lf", &from_x, &from_y, &to_x, &to_y)!=EOF)
-    {
-        point_t from(from_x, from_y);
-        point_t to(to_x, to_y);
-        model_t from_to(from, to);
-        map_model.push_back(from_to);
-    }
-    fclose(modelFile);
+    print_landmark_sequence_info(landmark_sequence);
 
     printf("------GA VERSION: %s ------\n", GA_VERSION);
     printf("Config: lambda=%f, pop_size=%d, generation=%d, \ncross_ratio=%f, mutation_ratio=%f, min_value=%d, max_value=%d\n",
            lambda, pop_size, generation, cross_ratio, mutation_ratio, ga_min_value, ga_max_value);
 
-    cout<<"landmark_sequence.size() = "<<landmark_sequence.size()<<endl;
-    printf("match_result_x: {");
-    for (int i = 0; i < landmark_sequence.size() - 1; i++)
-        printf("%f,", landmark_sequence[i].x);
-    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].x);
-
-    printf("match_result_y: {");
-    for (int i = 0; i < landmark_sequence.size() - 1; i++)
-        printf("%f,", landmark_sequence[i].y);
-    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].y);
-
-    printf("compass_reading: {");
-    for (int i = 0; i < landmark_sequence.size() - 1; i++)
-        printf("%f,", landmark_sequence[i].compass);
-    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].compass);
-
     // begin ga config
-    landmark_location.clear();
-    compass.clear();
 
     landmark_count = landmark_sequence.size();
     lambda_weight = lambda;
-    for (int i = 0; i < landmark_count; i++)
-    {
-        point_t p(landmark_sequence[i].x, landmark_sequence[i].y);
-        landmark_location.push_back(p);
-        compass.push_back(landmark_sequence[i].compass);
-    }
+    landmark_init(landmark_sequence);
 
     // See if we've been given a seed to use (for testing purposes).  When you
     // specify a random seed, the evolution will be exactly the same each time
@@ -167,10 +88,8 @@ ga_main(vector<landmark_info> &landmark_sequence,
     GARandomSeed(seed);
 
     // Declare variables for the GA parameters and set them to some default values.
-
     //    int popsize = 30;
     //    int ngen = 200;
-    //
     //    float pmut = 0.08;
     //    float pcross = 0.9;
 
@@ -228,6 +147,37 @@ vector_d genome2vector(GAGenome &ga)
         delta.push_back(genome.phenotype(i));
     return delta;
 }
+
+float objective(GAGenome &c)
+{
+    GABin2DecGenome &genome = (GABin2DecGenome &) c;
+
+    vector_d delta = genome2vector(genome);
+
+    vector_d result = calculate_location_result(delta);
+
+    if(isnan(result[2]))
+        assert(false);
+
+    return result[2];
+}
+
+//*****************************
+//以下是非遗传算法相关
+
+vector_d simple_weighted(vector<landmark_info> &landmark_sequence)
+{
+    print_landmark_sequence_info(landmark_sequence);
+    landmark_init(landmark_sequence);
+    vector_d delta(landmark_count, 0);
+    vector_d location_result = calculate_location_result(delta);
+
+    printf("Location Result is:(%f, %f), cost is: %f, %f, %f\n\n", location_result[0], location_result[1],
+           location_result[2], location_result[3], location_result[4]);
+
+    return location_result;
+}
+
 
 vector_d calculate_location_result(const vector_d &delta_theta)
 {
@@ -334,19 +284,101 @@ vector_d calculate_location_result(const vector_d &delta_theta)
     return result;
 }
 
-float objective(GAGenome &c)
+double dot_product(const point_t &veca, const point_t &vecb)
 {
-    GABin2DecGenome &genome = (GABin2DecGenome &) c;
-
-    vector_d delta = genome2vector(genome);
-
-    vector_d result = calculate_location_result(delta);
-
-    if(isnan(result[2]))
-        assert(false);
-
-    return result[2];
+    return veca.x * vecb.x + veca.y * vecb.y;
 }
 
+double norm(const point_t &vec)
+{
+    return sqrt(vec.x * vec.x + vec.y * vec.y);
+}
 
+point_t cross(const homo_point_t &from, const homo_point_t &to)
+{
+    double x = from.y * to.z - from.z * to.y;
+    double y = from.z * to.x - from.x * to.z;
+    double z = from.x * to.y - from.y * to.x;
+
+    return point_t(x / z, y / z);
+}
+
+double pdist(const point_t &veca, const point_t &vecb)
+{
+    return sqrt((veca.x - vecb.x) * (veca.x - vecb.x) +
+                (veca.y - vecb.y) * (veca.y - vecb.y));
+}
+
+bool line_intersection_side(const point_t A, const point_t B, const point_t C, const point_t D)
+{
+    double fC = (C.y - A.y) * (A.x - B.x) - (C.x - A.x) * (A.y - B.y);
+    double fD = (D.y - A.y) * (A.x - B.x) - (D.x - A.x) * (A.y - B.y);
+
+    return fC * fD <= 0;
+}
+
+bool is_can_see(const point_t user_pos, const point_t store_pos)
+{
+    double dist = pdist(user_pos, store_pos);
+    if (dist > LINE_OF_SIGHT_MAX || dist < LINE_OF_SIGHT_MIN || isnan(dist))
+        return false;
+
+    for (int i = 0; i < map_model.size(); i++)
+        if (line_intersection_side(user_pos, store_pos, map_model[i].from, map_model[i].to)
+            && line_intersection_side(map_model[i].from, map_model[i].to, user_pos, store_pos))
+        {
+            return false;
+        }
+    return true;
+}
+
+void print_landmark_sequence_info(vector<landmark_info> &landmark_sequence)
+{
+    cout<<"landmark_sequence : ";
+    for(int i=0; i<landmark_sequence.size(); ++i)
+        cout<<landmark_sequence[i].landmark_ID<<" ";
+    cout<<endl;
+
+    cout<<"landmark_sequence.size() = "<<landmark_sequence.size()<<endl;
+    printf("match_result_x: {");
+    for (int i = 0; i < landmark_sequence.size() - 1; i++)
+        printf("%f,", landmark_sequence[i].x);
+    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].x);
+
+    printf("match_result_y: {");
+    for (int i = 0; i < landmark_sequence.size() - 1; i++)
+        printf("%f,", landmark_sequence[i].y);
+    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].y);
+
+    printf("compass_reading: {");
+    for (int i = 0; i < landmark_sequence.size() - 1; i++)
+        printf("%f,", landmark_sequence[i].compass);
+    printf("%f}\n", landmark_sequence[landmark_sequence.size() - 1].compass);
+}
+
+void landmark_init(vector<landmark_info> &landmark_sequence)
+{
+    //load map_model
+    FILE *modelFile = fopen("./mapmodel_gogo.txt", "r");
+    double from_x, from_y, to_x, to_y;
+    while(fscanf(modelFile, "%lf %lf %lf %lf", &from_x, &from_y, &to_x, &to_y)!=EOF)
+    {
+        point_t from(from_x, from_y);
+        point_t to(to_x, to_y);
+        model_t from_to(from, to);
+        map_model.push_back(from_to);
+    }
+    fclose(modelFile);
+
+    landmark_location.clear();
+    compass.clear();
+
+    landmark_count = landmark_sequence.size();
+    for (int i = 0; i < landmark_count; i++)
+    {
+        point_t p(landmark_sequence[i].x, landmark_sequence[i].y);
+        landmark_location.push_back(p);
+        compass.push_back(landmark_sequence[i].compass);
+    }
+}
 #endif //KEYFRAMESELECTION_LOCATOR_OPTIMIZE_H

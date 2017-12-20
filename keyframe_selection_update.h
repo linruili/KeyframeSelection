@@ -113,7 +113,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
                     > frame_width - constant.tracker_ignore_start_threshold)
             {
                 cout<<"rcnn region filtered -_-    rcnn_counter="<<rcnn_counter
-                    <<"  region_index="<<region_index<<endl;
+                    <<"  region_index="<<re0gion_index<<endl;
                 region_index++;
                 continue;
             }

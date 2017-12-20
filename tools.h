@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <cmath>
 #include <kcftracker.hpp>
 #include <recttools.hpp>
 #include <cstdarg>
@@ -86,13 +87,73 @@ void load_landmark_x_y_compass(vector<landmark_info> &landmark_sequence, char* t
     double tmp2;
     while (fscanf(file, "%d %lf", &tmp1, &tmp2)!=EOF)
         compass.push_back(tmp2);
+    //高斯核生成
+    vector_d kernel;
+    double tmp_sum=0;
+    for(int i=0; i<2*constant.sampling+1; ++i)
+    {
+        int x = i-constant.sampling;
+        double kernel_num = 1.0/sqrt(2*M_PI)*exp(-x*x/(2*pow(constant.sampling/2,2)));
+        kernel.push_back(kernel_num);
+        tmp_sum += kernel_num;
+    }
+    for(int i=0; i<2*constant.sampling+1; ++i)
+        kernel[i] /= tmp_sum;
+    for(int i=0; i<2*constant.sampling+1; ++i)
+        cout<<kernel[i]<<' ';
+    cout<<endl;
     //把landmark_sequence的x,y,compass读进来
     for(int i=0; i<landmark_sequence.size(); ++i)
     {
         int landmark_ID = landmark_sequence[i].landmark_ID;
         landmark_sequence[i].x = landmark_correct[landmark_ID-1].x;
         landmark_sequence[i].y = landmark_correct[landmark_ID-1].y;
-        landmark_sequence[i].compass = compass[(landmark_sequence[i].keyframe-1)*constant.sampling];
+        //非滤波方法
+        //landmark_sequence[i].compass = compass[(landmark_sequence[i].keyframe-1)*constant.sampling];
+
+        //读关键帧compass的时候加上size=2*constant.sampling均值滤波
+        if(landmark_sequence[i].keyframe==1)//帧数太靠前，无法做滤波
+        {
+            double compass1 = 0;
+            for(int j=0; j<2*constant.sampling; ++j)
+                compass1 += compass[j];
+            compass1 /= 2*constant.sampling;
+            double compass2 = 0;
+            for(int j=1; j<3*constant.sampling; ++j)
+                compass2 += compass[j];
+            compass2 /= 2*constant.sampling;
+            landmark_sequence[i].compass = compass1 - (compass2-compass1);
+        }
+        else if(landmark_sequence[i].keyframe*constant.sampling>compass.size())//帧数太靠后，无法做滤波
+        {
+            int start_keyframe = landmark_sequence[i].keyframe*constant.sampling-4*constant.sampling;
+            double compass1 = 0;
+            for(int j=start_keyframe; j<start_keyframe+2*constant.sampling; ++j)
+                compass1 += compass[j];
+            compass1 /= 2*constant.sampling;
+            double compass2 = 0;
+            for(int j=start_keyframe+constant.sampling; j<start_keyframe+3*constant.sampling; ++j)
+                compass2 += compass[j];
+            compass2 /= 2*constant.sampling;
+            landmark_sequence[i].compass = compass2 + (compass2-compass1);
+        }
+        else
+        {
+            //均值滤波
+            /*double tmp_compass_sum = 0;
+            for(int j=(landmark_sequence[i].keyframe-2)*constant.sampling;
+                j<landmark_sequence[i].keyframe*constant.sampling; ++j)
+                tmp_compass_sum += compass[j];
+            landmark_sequence[i].compass = tmp_compass_sum/(2*constant.sampling);*/
+
+            //高斯滤波
+            landmark_sequence[i].compass = 0;
+            for(int j=(landmark_sequence[i].keyframe-2)*constant.sampling;
+                j<landmark_sequence[i].keyframe*constant.sampling+1; ++j)
+                landmark_sequence[i].compass +=
+                        compass[j]*kernel[j-(landmark_sequence[i].keyframe-2)*constant.sampling];
+
+        }
     }
     fclose(file);
     ftime(&t2);

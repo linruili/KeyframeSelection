@@ -18,8 +18,11 @@ public:
     const static int tracker_ignore_start_threshold = 50;
     const static int tracker_jump_length = 5;
     const static int sampling = 20;//图片每隔sampling帧，取一帧。此量用于得到正确的罗盘角
+    //const vector<double> kernel;
 
     const static int rcnn_method = 2;
+    //Constant(vector<double> a):kernel(a){}
+
 };
 
 class Landmark {
