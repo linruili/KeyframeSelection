@@ -34,36 +34,5 @@ public:
 };
 
 
-class Record{
-public:
-    Record();
 
-    vector<int> testcaseNum;
-    vector<int> totalFrameNum;
-    vector<int> load_time;
-    vector<int> rcnn_total_time;
-    vector<int> rcnn_total_num;
-    vector<int> kcf_total_time;
-    vector<int> GoogLeNet_total_time;
-    vector<int> locate_total_time;
-    vector<int> total_time;  //不算load时间
-    vector<double> total_error;  //去掉特别大的数据
-    vector<int> not_nan_error_num;
-    vector< vector<double> > errors;
-
-};
-
-Record::Record():load_time(vector<int>(3,0)),rcnn_total_time(vector<int>(3,0)),
-                 rcnn_total_num(vector<int>(3,0)),kcf_total_time(vector<int>(3,0)),
-                 GoogLeNet_total_time(vector<int>(3,0)),locate_total_time(vector<int>(3,0)),
-                 total_time(vector<int>(3,0)),total_error(vector<double >(3,0)),
-                 not_nan_error_num(vector<int>(3,0)),totalFrameNum(vector<int>(3,0)),
-                 errors(std::vector<vector<double>>(3,vector<double>()))
-{
-    testcaseNum.push_back(12);
-    testcaseNum.push_back(9);
-    testcaseNum.push_back(10);
-}
-
-Record final_result;
 #endif //KEYFRAMESELECTION_CONSTANT_H

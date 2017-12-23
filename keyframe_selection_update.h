@@ -24,8 +24,8 @@ int findKeyframe(int &minSpace,int minIndex, int curIndex, cv::Rect rect, int fr
     return minIndex;
 }
 
-void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Classifier &classifier,
-                               char *landmark_classification_filename, int phone_index)
+void keyframe_selection_update(char *result_dir, Myserver &myserver, Classifier &classifier,
+                               char *landmark_classification_filename)
 {
     /*
      * 所涉及到的目录
@@ -52,17 +52,17 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
     KCFTracker tracker;
 
     //*********************初始化路径和文件*****************************
-    char front_dir[256];
-    sprintf(front_dir, "%s/front", testcase_dir_name);
-    int total_frame = frame_counter(front_dir);
+
+
+    char recv_dir[256] = "../output/receive";
 
     char landmark_dir[256];
-    sprintf(landmark_dir, "%s/landmark", testcase_dir_name);
+    sprintf(landmark_dir, "%s/landmark", result_dir);
     remove_dir(landmark_dir);
     mkdir(landmark_dir, 0777);
 
     char rcnn_result_dir[256];
-    sprintf(rcnn_result_dir, "%s/rcnn_result", testcase_dir_name);
+    sprintf(rcnn_result_dir, "%s/rcnn_result", result_dir);
     remove_dir(rcnn_result_dir);
     mkdir(rcnn_result_dir, 0777);
 
@@ -74,22 +74,26 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
     int landmark_count = 0;
 
-    printf("front dir: %s \nlandmark dir: %s \nlandmark_list_filename: %s\n", front_dir, landmark_dir,
-           landmark_list_filename);
     //^********************初始化路径和文件*****************************
 
 
 
-    while (pre_frame_index < total_frame)
+    while (isReceiving || pre_frame_index < total_frame)
     {
+        if(isReceiving && pre_frame_index >= total_frame)
+        {
+            sleep(0.01);
+            continue;
+        }
+
         ftime(&t2);
 
-        vector<Landmark> regions = run_rcnn_procedure(testcase_dir_name, pre_frame_index,myserver);
+        vector<Landmark> regions = run_rcnn_procedure(recv_dir, pre_frame_index,myserver);
         cout<<"rcnn_frame_index = "<<pre_frame_index<<endl;
         cout<<"rcnn_regions.size() = "<<regions.size()<<endl;
         sort(regions.begin(), regions.end(), landmark_comp);
 
-        cv::Mat pre_frame = load_frame(testcase_dir_name, pre_frame_index);
+        cv::Mat pre_frame = frames[pre_frame_index-1];
 
         int frame_width, frame_height;
         frame_width = pre_frame.cols;
@@ -99,12 +103,11 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
         bool is_process = false;
 
         ftime(&t3);
-        final_result.rcnn_total_time[phone_index] += (t3.time-t2.time)*1000 + t3.millitm-t2.millitm;
 
         while (region_index < regions.size())
         {
             ftime(&t3);
-            pre_frame = load_frame(testcase_dir_name, pre_frame_index);
+            pre_frame = frames[pre_frame_index-1];
             //过滤掉region在图片下半部分的情况或region在图片最左或最右的
             if (regions[region_index].rect.x < constant.tracker_ignore_start_threshold
                  || regions[region_index].rect.y + regions[region_index].rect.height / 2
@@ -113,7 +116,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
                     > frame_width - constant.tracker_ignore_start_threshold)
             {
                 cout<<"rcnn region filtered -_-    rcnn_counter="<<rcnn_counter
-                    <<"  region_index="<<re0gion_index<<endl;
+                    <<"  region_index="<<region_index<<endl;
                 region_index++;
                 continue;
             }
@@ -164,7 +167,7 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             //向后跟踪
             while (cur_frame_index > 0)
             {
-                cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
+                cv::Mat next_frame = frames[cur_frame_index];
                 update_rect = tracker.update(next_frame);
 
                 pre_rect = update_rect;
@@ -202,13 +205,19 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             printf("backward to frame %d\n", cur_frame_index+1);
 
             cur_frame_index = pre_frame_index + 1;
-            pre_frame = load_frame(testcase_dir_name, pre_frame_index);
+            pre_frame = frames[pre_frame_index];
             tracker.init(regions[region_index].rect, pre_frame);
 
             //向前跟踪
-            while (cur_frame_index <= total_frame)
+            while (isReceiving || cur_frame_index <= total_frame)
             {
-                cv::Mat next_frame = load_frame(testcase_dir_name, cur_frame_index);
+                if(isReceiving && cur_frame_index > total_frame)
+                {
+                    sleep(0.01);
+                    continue;
+                }
+
+                cv::Mat next_frame = frames[cur_frame_index];
                 update_rect = tracker.update(next_frame);
 
                 pre_rect = update_rect;
@@ -257,7 +266,6 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
             long t;
             t = (t4.time-t3.time)*1000 + t4.millitm-t3.millitm;
             cout<<"**time for KCF = "<<t<<endl;
-            final_result.kcf_total_time[phone_index] += t;
             if(frame_index_end-frame_index_begin != 0)
                 cout<<"**time for KCF per frame = "<<t / (frame_index_end-frame_index_begin)<<endl;
 
@@ -279,7 +287,6 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
 
             ftime(&t5);
             t = (t5.time-t4.time)*1000 + t5.millitm-t4.millitm;
-            final_result.GoogLeNet_total_time[phone_index] += t;
             cout<<"**time for identifying = "<<t<<endl;
             identify_total_time += t;
 
@@ -302,7 +309,6 @@ void keyframe_selection_update(char *testcase_dir_name, Myserver &myserver, Clas
     }
 
     ftime(&t6);
-    final_result.rcnn_total_num[phone_index] += rcnn_counter;
     cout<<"**time for keyframe_selection_update = "<<(t6.time-t1.time)*1000 + t6.millitm-t1.millitm<<endl;
     cout<<"final RCNN counter = "<<rcnn_counter<<endl;
     cout<<"**identify_total_time = "<<identify_total_time<<endl;

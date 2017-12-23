@@ -12,15 +12,25 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <opencv2/core/mat.hpp>
+#include "constant.h"
 
 
-#define SERVPORT 3333   // 服务器监听端口号
 #define BACKLOG 10  // 最大同时连接请求数
 #define MAXDATASIZE 1000
+
+Constant constant;
+int rcnn_counter = 0;
+int isReceiving = 1;
+std::vector<cv::Mat> frames;
+vector<string> frame_names;
+std::vector<double> compass;
+int total_frame;
 
 class Myserver
 {
 private:
+    int SERVPORT;
     char buf[MAXDATASIZE];
     int recvbytes;
     int sock_fd,client_fd;  // sock_fd：监听socket；client_fd：数据传输socket
@@ -31,13 +41,15 @@ private:
     char rcnn_result_dir[1024];
     int mes_index=0;
 
+
 public:
     ~Myserver();
-    void start();
+    void start(int SERVPORT);
     void send_mes(char *mes, int len);
     void set_dir(char *dir);
     void rec_mes(char *rec_chars);
     void close_socket();
+    void recv_img_compass();
 
 
 };

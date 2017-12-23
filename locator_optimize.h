@@ -42,7 +42,7 @@ const double north[] = {1, 0};
 int landmark_count;
 vector<point_t> landmark_location;
 vector<model_t> map_model;//Ç½µÄÏß¶Î
-vector_d compass;
+//vector_d compass;
 double lambda_weight;
 
 double dot_product(const point_t &veca, const point_t &vecb);

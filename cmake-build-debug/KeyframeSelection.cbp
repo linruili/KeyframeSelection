@@ -107,6 +107,9 @@
 		<Unit filename="/home/HAVIL/KeyframeSelection/Myserver.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/classification.cpp">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/classification.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
@@ -311,9 +314,6 @@
 		<Unit filename="/home/HAVIL/KeyframeSelection/include/ga/garandom.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
-		<Unit filename="/home/HAVIL/KeyframeSelection/keyframe_init.h">
-			<Option target="KeyframeSelection"/>
-		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/keyframe_selection_update.h">
 			<Option target="KeyframeSelection"/>
 		</Unit>
@@ -326,7 +326,16 @@
 		<Unit filename="/home/HAVIL/KeyframeSelection/main.cpp">
 			<Option target="KeyframeSelection"/>
 		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/run_app_server.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/run_rcnn_procedure.cpp">
+			<Option target="KeyframeSelection"/>
+		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/run_rcnn_procedure.h">
+			<Option target="KeyframeSelection"/>
+		</Unit>
+		<Unit filename="/home/HAVIL/KeyframeSelection/tools.cpp">
 			<Option target="KeyframeSelection"/>
 		</Unit>
 		<Unit filename="/home/HAVIL/KeyframeSelection/tools.h">

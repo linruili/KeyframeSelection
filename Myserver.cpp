@@ -2,7 +2,9 @@
 // Created by Ruili on 17-5-4.
 //
 
+#include <sys/stat.h>
 #include "Myserver.h"
+#include "tools.h"
 
 using namespace std;
 
@@ -11,8 +13,9 @@ Myserver::~Myserver()
     close_socket();
 }
 
-void Myserver::start()
+void Myserver::start(int SERVPORT)
 {
+    this->SERVPORT = SERVPORT;
     if((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
         perror("socket创建出错！\n");
@@ -65,6 +68,91 @@ void Myserver::rec_mes(char *rec_chars)
     buf[recvbytes] = '\0';
     printf("Received: %s\n",buf);
     strcpy(rec_chars, buf);
+}
+
+void Myserver::recv_img_compass()
+{
+
+    char recv_dir[256] = "../output/receive";
+    char compass_filename[256] = "../ouput/receive/compass.txt";
+    char img_name[256];
+
+    mkdir(recv_dir, 0777);
+    FILE *compass_file = fopen(compass_filename, "a");
+    int doubleSize;
+    int frame_count = 0;
+
+    int imgSize = 640*480;
+    uchar sockData[imgSize];
+    while(frame_count >= 0)
+    {
+        char rec_int[4];
+        if((recvbytes=recv(client_fd, rec_int, sizeof(int), 0)) == -1)
+        {
+            perror("recv出错！");
+            return ;
+        }
+        imgSize = buffToInteger(rec_int);
+        cout<<"imgSize: "<<imgSize<<endl;
+        if(imgSize==0)//结束的标志
+        {
+            frame_count = -1;
+            break;
+        }
+
+        ++frame_count;
+        sprintf(img_name, "%s/%03d.jpg", recv_dir, frame_count);
+        int total_rec_bytes = 0;
+        for(int i=0; i<imgSize; i+=recvbytes)
+        {
+            recvbytes = recv(client_fd, sockData + i, imgSize - i, 0);
+            //cout<<"receive bytes:"<<recvbytes<<endl;
+            total_rec_bytes += recvbytes;
+            if(recvbytes == -1)
+            {
+                perror("recv出错！");
+                return ;
+            }
+        }
+        sockData[total_rec_bytes] = '\0';
+        cout<<"receive total bytes:"<<total_rec_bytes<<endl;
+
+        vector<uchar> img_data(sockData, sockData+total_rec_bytes);
+        cv::Mat img = cv::imdecode(img_data, CV_LOAD_IMAGE_COLOR);
+        frames.push_back(img);
+
+        char filename[256];
+        sprintf(filename, "%03d.jpg", frame_count);
+        string name = filename;
+        frame_names.push_back(name);
+
+        cv::imwrite(img_name, img);
+        cout<<"saved image "<<frame_count<<"-----------------"<<endl;
+
+        //receive compass
+        if((recvbytes=recv(client_fd, rec_int, sizeof(int), 0)) == -1)
+        {
+            perror("recv出错！");
+            return ;
+        }
+        doubleSize = buffToInteger(rec_int);
+        //cout<<"doubleSize: "<<doubleSize<<endl;
+
+        if((recvbytes=recv(client_fd, buf, doubleSize, 0)) == -1)
+        {
+            perror("recv出错！");
+            return ;
+        }
+        buf[recvbytes] = '\0';
+        double compass_each_frame = atof(buf);
+        compass.push_back(compass_each_frame);
+        cout<<"compass: "<<compass_each_frame<<endl;
+        fprintf(compass_file, "%f\n", compass_each_frame);
+    }
+    fclose(compass_file);
+    isReceiving = 0;
+    total_frame = frame_count;
+
 }
 
 void Myserver::set_dir(char *dir)

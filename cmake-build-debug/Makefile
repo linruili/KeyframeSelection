@@ -150,6 +150,33 @@ Myserver.cpp.s:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/Myserver.cpp.s
 .PHONY : Myserver.cpp.s
 
+classification.o: classification.cpp.o
+
+.PHONY : classification.o
+
+# target to build an object file
+classification.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/classification.cpp.o
+.PHONY : classification.cpp.o
+
+classification.i: classification.cpp.i
+
+.PHONY : classification.i
+
+# target to preprocess a source file
+classification.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/classification.cpp.i
+.PHONY : classification.cpp.i
+
+classification.s: classification.cpp.s
+
+.PHONY : classification.s
+
+# target to generate assembly for a file
+classification.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/classification.cpp.s
+.PHONY : classification.cpp.s
+
 include/ga/GA1DArrayGenome.o: include/ga/GA1DArrayGenome.C.o
 
 .PHONY : include/ga/GA1DArrayGenome.o
@@ -1041,6 +1068,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+run_rcnn_procedure.o: run_rcnn_procedure.cpp.o
+
+.PHONY : run_rcnn_procedure.o
+
+# target to build an object file
+run_rcnn_procedure.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.o
+.PHONY : run_rcnn_procedure.cpp.o
+
+run_rcnn_procedure.i: run_rcnn_procedure.cpp.i
+
+.PHONY : run_rcnn_procedure.i
+
+# target to preprocess a source file
+run_rcnn_procedure.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.i
+.PHONY : run_rcnn_procedure.cpp.i
+
+run_rcnn_procedure.s: run_rcnn_procedure.cpp.s
+
+.PHONY : run_rcnn_procedure.s
+
+# target to generate assembly for a file
+run_rcnn_procedure.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.s
+.PHONY : run_rcnn_procedure.cpp.s
+
+tools.o: tools.cpp.o
+
+.PHONY : tools.o
+
+# target to build an object file
+tools.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/tools.cpp.o
+.PHONY : tools.cpp.o
+
+tools.i: tools.cpp.i
+
+.PHONY : tools.i
+
+# target to preprocess a source file
+tools.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/tools.cpp.i
+.PHONY : tools.cpp.i
+
+tools.s: tools.cpp.s
+
+.PHONY : tools.s
+
+# target to generate assembly for a file
+tools.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/tools.cpp.s
+.PHONY : tools.cpp.s
+
 tracker/fhog.o: tracker/fhog.cpp.o
 
 .PHONY : tracker/fhog.o
@@ -1134,6 +1215,9 @@ help:
 	@echo "... Myserver.o"
 	@echo "... Myserver.i"
 	@echo "... Myserver.s"
+	@echo "... classification.o"
+	@echo "... classification.i"
+	@echo "... classification.s"
 	@echo "... include/ga/GA1DArrayGenome.o"
 	@echo "... include/ga/GA1DArrayGenome.i"
 	@echo "... include/ga/GA1DArrayGenome.s"
@@ -1233,6 +1317,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... run_rcnn_procedure.o"
+	@echo "... run_rcnn_procedure.i"
+	@echo "... run_rcnn_procedure.s"
+	@echo "... tools.o"
+	@echo "... tools.i"
+	@echo "... tools.s"
 	@echo "... tracker/fhog.o"
 	@echo "... tracker/fhog.i"
 	@echo "... tracker/fhog.s"

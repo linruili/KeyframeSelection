@@ -1,6 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/KeyframeSelection.dir/main.cpp.o"
   "CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o"
+  "CMakeFiles/KeyframeSelection.dir/tools.cpp.o"
+  "CMakeFiles/KeyframeSelection.dir/classification.cpp.o"
+  "CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.o"
   "CMakeFiles/KeyframeSelection.dir/tracker/fhog.cpp.o"
   "CMakeFiles/KeyframeSelection.dir/tracker/kcftracker.cpp.o"
   "CMakeFiles/KeyframeSelection.dir/tracker/runtracker.cpp.o"
