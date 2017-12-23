@@ -11,20 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e145a01-323e-4dd7-83f6-e0e03e5be939" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KeyframeSelection" afterPath="$PROJECT_DIR$/KeyframeSelection" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/tools.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/tools.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Myserver.cpp" afterPath="$PROJECT_DIR$/Myserver.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Myserver.h" afterPath="$PROJECT_DIR$/Myserver.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constant.h" afterPath="$PROJECT_DIR$/constant.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keyframe_selection_update.cpp" afterPath="$PROJECT_DIR$/keyframe_selection_update.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run_app_server.cpp" afterPath="$PROJECT_DIR$/run_app_server.cpp" />
-    </list>
+    <list default="true" id="9e145a01-323e-4dd7-83f6-e0e03e5be939" name="Default" comment="" />
     <ignored path="KeyframeSelection.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -60,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/Myserver.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
-              <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="22" />
+              <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="22" />
               <folding>
                 <element signature="e#38#59#0" expanded="true" />
               </folding>
@@ -519,15 +506,15 @@
       <workItem from="1513773560688" duration="5807000" />
       <workItem from="1513913891651" duration="11918000" />
       <workItem from="1514003500255" duration="3341000" />
-      <workItem from="1514020443190" duration="3385000" />
+      <workItem from="1514020443190" duration="3898000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="371070000" />
+    <option name="totallyTimeSpent" value="371583000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1280" height="974" extended-state="0" />
+    <frame x="0" y="26" width="1280" height="974" extended-state="1" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -927,7 +914,7 @@
     <entry file="file://$PROJECT_DIR$/Myserver.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="22" />
+          <caret line="34" column="12" lean-forward="false" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="22" />
           <folding>
             <element signature="e#38#59#0" expanded="true" />
           </folding>
