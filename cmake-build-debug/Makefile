@@ -123,6 +123,33 @@ KeyframeSelection/fast:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/build
 .PHONY : KeyframeSelection/fast
 
+LCS.o: LCS.cpp.o
+
+.PHONY : LCS.o
+
+# target to build an object file
+LCS.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/LCS.cpp.o
+.PHONY : LCS.cpp.o
+
+LCS.i: LCS.cpp.i
+
+.PHONY : LCS.i
+
+# target to preprocess a source file
+LCS.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/LCS.cpp.i
+.PHONY : LCS.cpp.i
+
+LCS.s: LCS.cpp.s
+
+.PHONY : LCS.s
+
+# target to generate assembly for a file
+LCS.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/LCS.cpp.s
+.PHONY : LCS.cpp.s
+
 Myserver.o: Myserver.cpp.o
 
 .PHONY : Myserver.o
@@ -176,6 +203,33 @@ classification.s: classification.cpp.s
 classification.cpp.s:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/classification.cpp.s
 .PHONY : classification.cpp.s
+
+filtering.o: filtering.cpp.o
+
+.PHONY : filtering.o
+
+# target to build an object file
+filtering.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/filtering.cpp.o
+.PHONY : filtering.cpp.o
+
+filtering.i: filtering.cpp.i
+
+.PHONY : filtering.i
+
+# target to preprocess a source file
+filtering.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/filtering.cpp.i
+.PHONY : filtering.cpp.i
+
+filtering.s: filtering.cpp.s
+
+.PHONY : filtering.s
+
+# target to generate assembly for a file
+filtering.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/filtering.cpp.s
+.PHONY : filtering.cpp.s
 
 include/ga/GA1DArrayGenome.o: include/ga/GA1DArrayGenome.C.o
 
@@ -1041,6 +1095,87 @@ include/ga/garandom.C.s:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/include/ga/garandom.C.s
 .PHONY : include/ga/garandom.C.s
 
+keyframe_selection_update.o: keyframe_selection_update.cpp.o
+
+.PHONY : keyframe_selection_update.o
+
+# target to build an object file
+keyframe_selection_update.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.o
+.PHONY : keyframe_selection_update.cpp.o
+
+keyframe_selection_update.i: keyframe_selection_update.cpp.i
+
+.PHONY : keyframe_selection_update.i
+
+# target to preprocess a source file
+keyframe_selection_update.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.i
+.PHONY : keyframe_selection_update.cpp.i
+
+keyframe_selection_update.s: keyframe_selection_update.cpp.s
+
+.PHONY : keyframe_selection_update.s
+
+# target to generate assembly for a file
+keyframe_selection_update.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.s
+.PHONY : keyframe_selection_update.cpp.s
+
+landmark_identification.o: landmark_identification.cpp.o
+
+.PHONY : landmark_identification.o
+
+# target to build an object file
+landmark_identification.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/landmark_identification.cpp.o
+.PHONY : landmark_identification.cpp.o
+
+landmark_identification.i: landmark_identification.cpp.i
+
+.PHONY : landmark_identification.i
+
+# target to preprocess a source file
+landmark_identification.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/landmark_identification.cpp.i
+.PHONY : landmark_identification.cpp.i
+
+landmark_identification.s: landmark_identification.cpp.s
+
+.PHONY : landmark_identification.s
+
+# target to generate assembly for a file
+landmark_identification.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/landmark_identification.cpp.s
+.PHONY : landmark_identification.cpp.s
+
+locator_optimize.o: locator_optimize.cpp.o
+
+.PHONY : locator_optimize.o
+
+# target to build an object file
+locator_optimize.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/locator_optimize.cpp.o
+.PHONY : locator_optimize.cpp.o
+
+locator_optimize.i: locator_optimize.cpp.i
+
+.PHONY : locator_optimize.i
+
+# target to preprocess a source file
+locator_optimize.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/locator_optimize.cpp.i
+.PHONY : locator_optimize.cpp.i
+
+locator_optimize.s: locator_optimize.cpp.s
+
+.PHONY : locator_optimize.s
+
+# target to generate assembly for a file
+locator_optimize.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/locator_optimize.cpp.s
+.PHONY : locator_optimize.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -1067,6 +1202,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+run_app_server.o: run_app_server.cpp.o
+
+.PHONY : run_app_server.o
+
+# target to build an object file
+run_app_server.cpp.o:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.o
+.PHONY : run_app_server.cpp.o
+
+run_app_server.i: run_app_server.cpp.i
+
+.PHONY : run_app_server.i
+
+# target to preprocess a source file
+run_app_server.cpp.i:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.i
+.PHONY : run_app_server.cpp.i
+
+run_app_server.s: run_app_server.cpp.s
+
+.PHONY : run_app_server.s
+
+# target to generate assembly for a file
+run_app_server.cpp.s:
+	$(MAKE) -f CMakeFiles/KeyframeSelection.dir/build.make CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.s
+.PHONY : run_app_server.cpp.s
 
 run_rcnn_procedure.o: run_rcnn_procedure.cpp.o
 
@@ -1212,12 +1374,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... KeyframeSelection"
+	@echo "... LCS.o"
+	@echo "... LCS.i"
+	@echo "... LCS.s"
 	@echo "... Myserver.o"
 	@echo "... Myserver.i"
 	@echo "... Myserver.s"
 	@echo "... classification.o"
 	@echo "... classification.i"
 	@echo "... classification.s"
+	@echo "... filtering.o"
+	@echo "... filtering.i"
+	@echo "... filtering.s"
 	@echo "... include/ga/GA1DArrayGenome.o"
 	@echo "... include/ga/GA1DArrayGenome.i"
 	@echo "... include/ga/GA1DArrayGenome.s"
@@ -1314,9 +1482,21 @@ help:
 	@echo "... include/ga/garandom.o"
 	@echo "... include/ga/garandom.i"
 	@echo "... include/ga/garandom.s"
+	@echo "... keyframe_selection_update.o"
+	@echo "... keyframe_selection_update.i"
+	@echo "... keyframe_selection_update.s"
+	@echo "... landmark_identification.o"
+	@echo "... landmark_identification.i"
+	@echo "... landmark_identification.s"
+	@echo "... locator_optimize.o"
+	@echo "... locator_optimize.i"
+	@echo "... locator_optimize.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... run_app_server.o"
+	@echo "... run_app_server.i"
+	@echo "... run_app_server.s"
 	@echo "... run_rcnn_procedure.o"
 	@echo "... run_rcnn_procedure.i"
 	@echo "... run_rcnn_procedure.s"

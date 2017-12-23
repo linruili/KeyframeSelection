@@ -2,6 +2,7 @@
 // Created by ruili on 17-12-23.
 //
 
+#include "run_rcnn_procedure.h"
 #include "constant.h"
 #include "tools.h"
 #include "Myserver.h"

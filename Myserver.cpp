@@ -2,11 +2,19 @@
 // Created by Ruili on 17-5-4.
 //
 
-#include <sys/stat.h>
 #include "Myserver.h"
+#include <sys/stat.h>
 #include "tools.h"
 
 using namespace std;
+
+Constant constant;
+int rcnn_counter = 0;
+int isReceiving = 1;
+std::vector<cv::Mat> frames;
+vector<string> frame_names;
+std::vector<double> compass;
+int total_frame;
 
 Myserver::~Myserver()
 {

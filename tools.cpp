@@ -1,6 +1,8 @@
 //
 // Created by ruili on 17-12-23.
 //
+
+#include "tools.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <vector>
@@ -17,7 +19,6 @@
 #include <sys/stat.h>
 #include <regex>
 #include "constant.h"
-#include "tools.h"
 #include "Myserver.h"
 #include <sys/timeb.h>
 

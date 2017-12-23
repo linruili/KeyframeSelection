@@ -19,13 +19,13 @@
 #define BACKLOG 10  // 最大同时连接请求数
 #define MAXDATASIZE 1000
 
-Constant constant;
-int rcnn_counter = 0;
-int isReceiving = 1;
-std::vector<cv::Mat> frames;
-vector<string> frame_names;
-std::vector<double> compass;
-int total_frame;
+extern Constant constant;
+extern int rcnn_counter;
+extern int isReceiving;
+extern std::vector<cv::Mat> frames;
+extern vector<string> frame_names;
+extern std::vector<double> compass;
+extern int total_frame;
 
 class Myserver
 {
