@@ -78,11 +78,11 @@ void Myserver::rec_mes(char *rec_chars)
     strcpy(rec_chars, buf);
 }
 
-void Myserver::recv_img_compass()
+void Myserver::recv_img_compass(char *recv_dir)
 {
 
-    char recv_dir[256] = "../output/receive";
-    char compass_filename[256] = "../ouput/receive/compass.txt";
+    char compass_filename[256];
+    sprintf(compass_filename, "%s/compass.txt", recv_dir);
     char img_name[256];
 
     mkdir(recv_dir, 0777);
@@ -94,6 +94,7 @@ void Myserver::recv_img_compass()
     uchar sockData[imgSize];
     while(frame_count >= 0)
     {
+        cout<<"sdfsdf";
         char rec_int[4];
         if((recvbytes=recv(client_fd, rec_int, sizeof(int), 0)) == -1)
         {
@@ -104,7 +105,7 @@ void Myserver::recv_img_compass()
         cout<<"imgSize: "<<imgSize<<endl;
         if(imgSize==0)//结束的标志
         {
-            frame_count = -1;
+            frame_count = -2;
             break;
         }
 

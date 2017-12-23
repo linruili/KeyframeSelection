@@ -12,45 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e145a01-323e-4dd7-83f6-e0e03e5be939" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LCS.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/filtering.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/keyframe_selection_update.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/landmark_identification.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locator_optimize.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run_app_server.cpp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/41" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/5" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/count.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KeyframeSelection" afterPath="$PROJECT_DIR$/KeyframeSelection" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/Myserver.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/main.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/keyframe_selection_update.cpp.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_app_server.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/run_rcnn_procedure.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/tools.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/tools.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LCS.h" afterPath="$PROJECT_DIR$/LCS.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Myserver.cpp" afterPath="$PROJECT_DIR$/Myserver.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Myserver.h" afterPath="$PROJECT_DIR$/Myserver.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/depend.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/link.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/KeyframeSelection.dir/progress.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/KeyframeSelection.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/KeyframeSelection.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filtering.h" afterPath="$PROJECT_DIR$/filtering.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keyframe_selection_update.h" afterPath="$PROJECT_DIR$/keyframe_selection_update.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/landmark_identification.h" afterPath="$PROJECT_DIR$/landmark_identification.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locator_optimize.h" afterPath="$PROJECT_DIR$/locator_optimize.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run_app_server.h" afterPath="$PROJECT_DIR$/run_app_server.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run_rcnn_procedure.cpp" afterPath="$PROJECT_DIR$/run_rcnn_procedure.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools.cpp" afterPath="$PROJECT_DIR$/tools.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constant.h" afterPath="$PROJECT_DIR$/constant.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keyframe_selection_update.cpp" afterPath="$PROJECT_DIR$/keyframe_selection_update.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run_app_server.cpp" afterPath="$PROJECT_DIR$/run_app_server.cpp" />
     </list>
     <ignored path="KeyframeSelection.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,28 +43,37 @@
     <favorites_list name="KeyframeSelection" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="locator_optimize.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/locator_optimize.cpp">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="run_app_server.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_app_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="283">
+              <caret line="46" column="12" lean-forward="false" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
               <folding>
-                <element signature="e#40#69#0" expanded="true" />
-                <element signature="e#498#602#0" expanded="true" />
+                <element signature="e#40#67#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="locator_optimize.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/locator_optimize.h">
+      <file leaf-file-name="Myserver.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Myserver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+            <state relative-caret-position="288">
+              <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="22" />
               <folding>
-                <element signature="e#130#148#0" expanded="true" />
+                <element signature="e#38#59#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Myserver.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Myserver.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,7 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tracker_ignore_start_threshold</find>
       <find>**t</find>
       <find>rcnn_counter</find>
       <find>**time for KCF</find>
@@ -130,6 +111,7 @@
       <find>total_frame</find>
       <find>front_dir</find>
       <find>lambda_weight</find>
+      <find>bind</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -150,7 +132,6 @@
         <option value="$PROJECT_DIR$/ibs_matrix.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/keyframe_init.h" />
-        <option value="$PROJECT_DIR$/constant.h" />
         <option value="$PROJECT_DIR$/run_test.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/tools.h" />
@@ -162,17 +143,18 @@
         <option value="$PROJECT_DIR$/LCS.h" />
         <option value="$PROJECT_DIR$/filtering.h" />
         <option value="$PROJECT_DIR$/filtering.cpp" />
-        <option value="$PROJECT_DIR$/keyframe_selection_update.cpp" />
         <option value="$PROJECT_DIR$/landmark_identification.cpp" />
         <option value="$PROJECT_DIR$/LCS.cpp" />
         <option value="$PROJECT_DIR$/run_rcnn_procedure.cpp" />
         <option value="$PROJECT_DIR$/tools.cpp" />
-        <option value="$PROJECT_DIR$/run_app_server.cpp" />
-        <option value="$PROJECT_DIR$/run_app_server.h" />
-        <option value="$PROJECT_DIR$/Myserver.cpp" />
-        <option value="$PROJECT_DIR$/Myserver.h" />
         <option value="$PROJECT_DIR$/locator_optimize.cpp" />
         <option value="$PROJECT_DIR$/locator_optimize.h" />
+        <option value="$PROJECT_DIR$/constant.h" />
+        <option value="$PROJECT_DIR$/run_app_server.h" />
+        <option value="$PROJECT_DIR$/keyframe_selection_update.cpp" />
+        <option value="$PROJECT_DIR$/Myserver.cpp" />
+        <option value="$PROJECT_DIR$/Myserver.h" />
+        <option value="$PROJECT_DIR$/run_app_server.cpp" />
       </list>
     </option>
   </component>
@@ -231,6 +213,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="KeyframeSelection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KeyframeSelection" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KeyframeSelection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="output" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -522,23 +518,23 @@
       <workItem from="1513406653421" duration="14757000" />
       <workItem from="1513773560688" duration="5807000" />
       <workItem from="1513913891651" duration="11918000" />
-      <workItem from="1514003500255" duration="155000" />
+      <workItem from="1514003500255" duration="3341000" />
+      <workItem from="1514020443190" duration="3385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364499000" />
+    <option name="totallyTimeSpent" value="371070000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1280" height="974" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19327074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3889556" sideWeight="0.4968701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34795323" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3889556" sideWeight="0.5031299" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24009603" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34453782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -586,21 +582,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tracker/kcftracker.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/recttools.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.h" />
     <entry file="file:///usr/include/c++/4.8/bits/vector.tcc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -734,16 +715,6 @@
     <entry file="file://$PROJECT_DIR$/run_test.cpp" />
     <entry file="file://$PROJECT_DIR$/run_test.h" />
     <entry file="file://$PROJECT_DIR$/keyframe_init.h" />
-    <entry file="file://$PROJECT_DIR$/constant.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#69#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/4.8/ext/atomicity.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -755,21 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="873">
           <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#170#202#0" expanded="false" />
-            <element signature="e#303#323#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-          <folding>
-            <element signature="e#85#117#0" expanded="false" />
-            <element signature="e#218#238#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -802,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/filtering.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/keyframe_selection_update.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -816,21 +765,6 @@
           <folding>
             <element signature="e#147#165#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/landmark_identification.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,65 +776,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LCS.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keyframe_selection_update.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/4.8/iostream">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_rcnn_procedure.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#40#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_app_server.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Myserver.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Myserver.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#38#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -914,19 +793,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_app_server.cpp">
+    <entry file="file://$PROJECT_DIR$/locator_optimize.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        <state relative-caret-position="61">
+          <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
           <folding>
-            <element signature="e#40#67#0" expanded="true" />
+            <element signature="e#130#148#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3230">
+          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filtering.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-998">
+          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/landmark_identification.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1516">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LCS.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1192">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/locator_optimize.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
+        <state relative-caret-position="-2538">
           <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding>
             <element signature="e#40#69#0" expanded="true" />
@@ -935,12 +844,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/locator_optimize.h">
+    <entry file="file://$PROJECT_DIR$/constant.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        <state relative-caret-position="90">
+          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keyframe_selection_update.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="58" column="48" lean-forward="true" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="48" />
           <folding>
-            <element signature="e#130#148#0" expanded="true" />
+            <element signature="e#40#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_rcnn_procedure.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-616">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_app_server.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/receive/compass.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-206">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/receive/018.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/receive/022.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_app_server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="46" column="12" lean-forward="false" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Myserver.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Myserver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="22" />
+          <folding>
+            <element signature="e#38#59#0" expanded="true" />
           </folding>
         </state>
       </provider>

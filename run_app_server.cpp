@@ -22,9 +22,14 @@ void run_app_server(char* argv)
     string label_file   = "/home/download/caffe-master/models/GoogleNet/lable.txt";
     Classifier classifier(model_file, trained_file, mean_file, label_file);
 
-    char output_dir[256] = "../output";
-    char result_dir[256] = "../output/result";
-    char landmark_classification_filename[256] = "../output/result/landmark_classification.txt";
+    char output_dir[256] = "./output";
+    char result_dir[256];
+    sprintf(result_dir, "%s/result", output_dir);
+    char recv_dir[256];
+    sprintf(recv_dir, "%s/receive", output_dir);
+
+    char landmark_classification_filename[256];
+    sprintf(landmark_classification_filename, "%s/landmark_classification.txt", result_dir);
     remove_dir(output_dir);
     mkdir(output_dir, 0777);
     mkdir(result_dir, 0777);
@@ -36,9 +41,10 @@ void run_app_server(char* argv)
         ftime(&t4);
         Myserver app_server;
         app_server.start(8080);
-        app_server.recv_img_compass();
+        app_server.recv_img_compass(recv_dir);
         ftime(&t5);
     }
+    sleep(30);
 
     Myserver myserver;
     myserver.start(3333);
@@ -47,7 +53,7 @@ void run_app_server(char* argv)
      */
 
     ftime(&t1);
-    keyframe_selection_update(result_dir, myserver, classifier, landmark_classification_filename);
+    keyframe_selection_update(output_dir, myserver, classifier, landmark_classification_filename);
     vector<landmark_info> landmark_sequence = filter(landmark_classification_filename);
     load_landmark_compass(landmark_sequence);
     ftime(&t2);

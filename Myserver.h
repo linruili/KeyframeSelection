@@ -49,7 +49,7 @@ public:
     void set_dir(char *dir);
     void rec_mes(char *rec_chars);
     void close_socket();
-    void recv_img_compass();
+    void recv_img_compass(char *recv_dir);
 
 
 };

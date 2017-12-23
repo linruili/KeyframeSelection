@@ -22,7 +22,7 @@ int findKeyframe(int &minSpace,int minIndex, int curIndex, cv::Rect rect, int fr
     return minIndex;
 }
 
-void keyframe_selection_update(char *result_dir, Myserver &myserver, Classifier &classifier,
+void keyframe_selection_update(char *output_dir, Myserver &myserver, Classifier &classifier,
                                char *landmark_classification_filename)
 {
     /*
@@ -52,7 +52,11 @@ void keyframe_selection_update(char *result_dir, Myserver &myserver, Classifier 
     //*********************初始化路径和文件*****************************
 
 
-    char recv_dir[256] = "../output/receive";
+    char result_dir[256];
+    sprintf(result_dir, "%s/result", output_dir);
+
+    char recv_dir[256];
+    sprintf(recv_dir, "%s/receive", output_dir);
 
     char landmark_dir[256];
     sprintf(landmark_dir, "%s/landmark", result_dir);
