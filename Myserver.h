@@ -60,7 +60,7 @@ public:
     void recv_img_compass(char *recv_dir);
 
     void send_result(double x, double y);
-}
+};
 
 
 #endif //KEYFRAMESELECTION_MYSERVER_H

@@ -73,13 +73,9 @@ void Myserver::send_mes(char *mes, int len)
 void Myserver::send_result(double x, double y)
 {
 
-
-
-
-
-
-
-
+    string s = to_string(x) + "#" + to_string(y) + "\r";
+    if(send(client_fd, (const void *)s.c_str(), s.length(), 0) == -1)
+        perror("send³ö´í£¡");
 }
 
 void Myserver::rec_mes(char *rec_chars)

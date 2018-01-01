@@ -14,11 +14,13 @@
 
 using namespace std;
 
+Myserver app_server(8080);
+
 void* recv_img_compass(void* args)
 {
     char recv_dir[256] = "/home/HAVIL/KeyframeSelection/output/receive";
     timeb t4, t5;
-    Myserver app_server(8080);
+
     app_server.start();
     ftime(&t4);
     app_server.recv_img_compass(recv_dir);
@@ -92,7 +94,13 @@ void run_app_server(char* argv)
     t /= ROUND;
     cout << "**time_locate = " << t << endl;
 
-
     cout<<"x: "<<result[0]<<" y: "<<result[1]<<endl;
+    if(result[0]>10000 || result[0]==0)
+        app_server.send_result(500.0, 800.0);
+    else
+        app_server.send_result(result[0], result[1]);
+
+    app_server.close_socket();
+    myserver.close_socket();
 
 }
