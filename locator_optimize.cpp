@@ -34,6 +34,7 @@ using namespace std;
 const double north[] = {1, 0};
 int landmark_count;
 vector<point_t> landmark_location;
+vector<point_t> landmark_correct;
 vector<model_t> map_model;//Ç½µÄÏß¶Î
 //vector_d compass;
 double lambda_weight;

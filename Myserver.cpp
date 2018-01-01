@@ -21,9 +21,14 @@ Myserver::~Myserver()
     close_socket();
 }
 
-void Myserver::start(int SERVPORT)
+
+Myserver::Myserver(int SERVPORT)
 {
     this->SERVPORT = SERVPORT;
+}
+
+void Myserver::start()
+{
     if((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
         perror("socket´´½¨³ö´í£¡\n");
@@ -65,6 +70,18 @@ void Myserver::send_mes(char *mes, int len)
     }
 }
 
+void Myserver::send_result(double x, double y)
+{
+
+
+
+
+
+
+
+
+}
+
 void Myserver::rec_mes(char *rec_chars)
 {
     if ((recvbytes = recv(client_fd, buf, MAXDATASIZE, 0)) == -1)
@@ -80,7 +97,6 @@ void Myserver::rec_mes(char *rec_chars)
 
 void Myserver::recv_img_compass(char *recv_dir)
 {
-
     char compass_filename[256];
     sprintf(compass_filename, "%s/compass.txt", recv_dir);
     char img_name[256];
@@ -94,7 +110,6 @@ void Myserver::recv_img_compass(char *recv_dir)
     uchar sockData[imgSize];
     while(frame_count >= 0)
     {
-        cout<<"sdfsdf";
         char rec_int[4];
         if((recvbytes=recv(client_fd, rec_int, sizeof(int), 0)) == -1)
         {
@@ -145,7 +160,6 @@ void Myserver::recv_img_compass(char *recv_dir)
             return ;
         }
         doubleSize = buffToInteger(rec_int);
-        //cout<<"doubleSize: "<<doubleSize<<endl;
 
         if((recvbytes=recv(client_fd, buf, doubleSize, 0)) == -1)
         {
@@ -157,10 +171,11 @@ void Myserver::recv_img_compass(char *recv_dir)
         compass.push_back(compass_each_frame);
         cout<<"compass: "<<compass_each_frame<<endl;
         fprintf(compass_file, "%f\n", compass_each_frame);
+
+        total_frame = frame_count;
     }
     fclose(compass_file);
     isReceiving = 0;
-    total_frame = frame_count;
 
 }
 

@@ -20,6 +20,7 @@
 #include <regex>
 #include "constant.h"
 #include "Myserver.h"
+#include "locator_optimize.h"
 #include <sys/timeb.h>
 
 int buffToInteger(char* buffer)
@@ -28,7 +29,7 @@ int buffToInteger(char* buffer)
     return a;
 }
 
-void load_landmark_compass(vector<landmark_info> &landmark_sequence)
+void load_landmark_x_y_compass(vector<landmark_info> &landmark_sequence)
 {
     timeb t1,t2;
     ftime(&t1);
@@ -52,8 +53,12 @@ void load_landmark_compass(vector<landmark_info> &landmark_sequence)
     for(int i=0; i<landmark_sequence.size(); ++i)
     {
         int landmark_ID = landmark_sequence[i].landmark_ID;
+        landmark_sequence[i].x = landmark_correct[landmark_ID-1].x;
+        landmark_sequence[i].y = landmark_correct[landmark_ID-1].y;
         //非滤波方法
         landmark_sequence[i].compass = compass[(landmark_sequence[i].keyframe-1)*constant.sampling];
+        int compass_keyframe_index = (landmark_sequence[i].keyframe-1)*constant.sampling;
+        cout<<"compass_keyframe_index: "<<compass_keyframe_index<<endl;
 
         //读关键帧compass的时候加上size=2*constant.sampling均值滤波
         /*if(landmark_sequence[i].keyframe==1)//帧数太靠前，无法做滤波
@@ -103,6 +108,19 @@ void load_landmark_compass(vector<landmark_info> &landmark_sequence)
     ftime(&t2);
     long t = (t2.time-t1.time)*1000 + t2.millitm-t1.millitm;
     cout<<"**time for load_landmark_x_y_compass = "<<t<<endl;
+}
+
+void load_landmark_correct()
+{
+    char fileName[256] = "./location_correct.txt";
+    double x,y;
+    FILE *file = fopen(fileName, "r");
+    while(fscanf(file, "%lf%lf", &x, &y)!=EOF)
+    {
+        point_t point(x,y);
+        landmark_correct.push_back(point);
+    }
+    fclose(file);
 }
 
 

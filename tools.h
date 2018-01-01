@@ -73,23 +73,43 @@ typedef struct landmark_info
 }landmark_info;
 
 
-void load_landmark_compass(vector<landmark_info> &landmark_sequence);
+void load_landmark_x_y_compass(vector<landmark_info> &landmark_sequence);
+
+void load_landmark_correct();
+
 void split(const string &src, const string &separator, vector<string> &dest);
+
 bool landmark_comp(Landmark a, Landmark b);
+
 bool landmark_comp_reverse(Landmark a, Landmark b);
+
 cv::Mat load_frame(char *testcase_dir, int frame_index);
+
 string get_name_from_frame_index(int frame_index);
+
 int frame_counter(char *path);
+
 void show_image_with_rect(cv::Mat _image, cv::Rect rect);
+
 void remove_dir(char *path);
+
 double *load_image(const char *filename, int &rows, int &cols);
+
 double *mat_to_array(cv::Mat image_mat, int &rows, int &cols);
+
 void show_image(double *image, int rows, int cols);
+
 void load_video(const char *video_name, const char *output_video, const char *main_frame_directory);
+
 std::vector<std::vector<double> > load_points(const char *filename);
+
 void print_points(std::vector<std::vector<double> > points);
+
 void extract_videos(const char *video_filename);
+
 int buffToInteger(char* buffer);
+
+
 
 
 #endif //EDGEDETECTION_TOOLS_H

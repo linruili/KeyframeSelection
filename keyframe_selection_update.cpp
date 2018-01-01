@@ -27,8 +27,7 @@ void keyframe_selection_update(char *output_dir, Myserver &myserver, Classifier 
 {
     /*
      * 所涉及到的目录
-     * front_dir = testcase_dir_name + front
-     * landmark_dir = testcase_dir_name + landmark
+     * landmark_dir = result_dir + /landmark
      * landmark_sub_dir = landmark_dir + landmark_count
      *
      * 文件
@@ -37,6 +36,7 @@ void keyframe_selection_update(char *output_dir, Myserver &myserver, Classifier 
      * landmark_sub_list_filename = landmark_sub_dir + /landmark_detail.txt
      * landmark_region_filename = landmark_sub_dir + /region_index.jpg
      * */
+    cout<<"start keyframe selection update"<<endl;
     timeb t1,t2,t3,t4,t5,t6;
     long identify_total_time = 0;
     ftime(&t1);
@@ -78,15 +78,25 @@ void keyframe_selection_update(char *output_dir, Myserver &myserver, Classifier 
 
     //^********************初始化路径和文件*****************************
 
-
-
+    cout<<"pre_frame_index: "<<pre_frame_index<<endl;
+    cout<<"total_frame: "<<total_frame<<endl;
+    int tmp = 1;
     while (isReceiving || pre_frame_index < total_frame)
     {
         if(isReceiving && pre_frame_index >= total_frame)
         {
-            sleep(0.01);
+            ++tmp;
+            if(tmp%20==0)
+            {
+                cout<<"pre_frame_index: "<<pre_frame_index<<endl;
+                cout<<"total_frame: "<<total_frame<<endl;
+            }
+
+            sleep(0.1);
             continue;
         }
+
+
 
         ftime(&t2);
 
@@ -211,9 +221,9 @@ void keyframe_selection_update(char *output_dir, Myserver &myserver, Classifier 
             tracker.init(regions[region_index].rect, pre_frame);
 
             //向前跟踪
-            while (isReceiving || cur_frame_index <= total_frame)
+            while (isReceiving || cur_frame_index < total_frame)
             {
-                if(isReceiving && cur_frame_index > total_frame)
+                if(isReceiving && cur_frame_index >= total_frame)
                 {
                     sleep(0.01);
                     continue;
@@ -251,7 +261,8 @@ void keyframe_selection_update(char *output_dir, Myserver &myserver, Classifier 
                 {
                     break;
                 }
-
+//                cout<<"start forward to frame"<<endl;
+//                cout<<"cur_frame_index: "<<cur_frame_index<<endl;
                 cur_frame_index++;
             }
             frame_index_end = cur_frame_index-1;

@@ -42,6 +42,7 @@ using namespace std;
 extern const double north[];
 extern int landmark_count;
 extern vector<point_t> landmark_location;
+extern vector<point_t> landmark_correct;
 extern vector<model_t> map_model;//Ç½µÄÏß¶Î
 //vector_d compass;
 extern double lambda_weight;

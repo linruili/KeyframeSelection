@@ -17,7 +17,7 @@ public:
     const static int tracker_ignore_threshold = 30;
     const static int tracker_ignore_start_threshold = 50;
     const static int tracker_jump_length = 10;
-    const static int sampling = 2;//图片每隔sampling帧，取一帧。此量用于得到正确的罗盘角
+    const static int sampling = 1;//图片每隔sampling帧，取一帧。此量用于得到正确的罗盘角
     //const vector<double> kernel;
 
     const static int rcnn_method = 2;

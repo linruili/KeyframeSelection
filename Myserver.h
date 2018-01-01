@@ -33,26 +33,34 @@ private:
     int SERVPORT;
     char buf[MAXDATASIZE];
     int recvbytes;
-    int sock_fd,client_fd;  // sock_fd：监听socket；client_fd：数据传输socket
+    int sock_fd, client_fd;  // sock_fd：监听socket；client_fd：数据传输socket
     int sin_size;
     struct sockaddr_in my_addr; // 本机地址信息
     struct sockaddr_in remote_addr; // 客户端地址信息
     long flag = 1;
     char rcnn_result_dir[1024];
-    int mes_index=0;
+    int mes_index = 0;
 
 
 public:
     ~Myserver();
-    void start(int SERVPORT);
+
+    Myserver(int SERVPORT);
+
+    void start();
+
     void send_mes(char *mes, int len);
+
     void set_dir(char *dir);
+
     void rec_mes(char *rec_chars);
+
     void close_socket();
+
     void recv_img_compass(char *recv_dir);
 
-
-};
+    void send_result(double x, double y);
+}
 
 
 #endif //KEYFRAMESELECTION_MYSERVER_H

@@ -1121,6 +1121,8 @@ locator_optimize.h
 /home/HAVIL/KeyframeSelection/locator_optimize.h
 sys/timeb.h
 -
+pthread.h
+-
 
 /home/HAVIL/KeyframeSelection/run_app_server.h
 Myserver.h
@@ -1201,6 +1203,8 @@ constant.h
 /home/HAVIL/KeyframeSelection/constant.h
 Myserver.h
 /home/HAVIL/KeyframeSelection/Myserver.h
+locator_optimize.h
+/home/HAVIL/KeyframeSelection/locator_optimize.h
 sys/timeb.h
 -
 
